@@ -1,2 +1,1 @@
-# chowkaset-nectec
-chowkaset-nectec
+# chowkaset
