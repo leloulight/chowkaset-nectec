@@ -14,7 +14,7 @@ function place_kaset(map_id) {
           if(data[0].fname==null||data[0].fname=='null'){
             $('#kaset_name').html(data[0].name);
           }else{
-            $('#kaset_name').html(data[0].prefix_name+' '+data[0].fname+' '+data[0].lname);
+            $('#kaset_name').html(data[0].prefix_name+' '+data[0].fname+' '+data[0].lname+'55555sss');
           }
           //ชื่อพืช และ พันธุ์พืช
           $('#kaset_seed').html(data[0].seed_name+' '+data[0].breed_name+' ('+data[0].cp_name+')');
