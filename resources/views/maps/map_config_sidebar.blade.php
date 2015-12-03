@@ -1,4 +1,4 @@
-<div style="background-color: white;height: 100%;width:100%;padding: 0px;">
+<div style="background-color: white;height: 100%;width:100%;padding: 0px;z-index:0;">
 		<div class="map_search_header">
 			<div class="text-search"><h1>ตั้งค่าแผนที่เพาะปลูก</h1></div>
 		</div>

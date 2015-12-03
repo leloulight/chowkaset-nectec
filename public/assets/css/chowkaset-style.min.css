@@ -193,7 +193,8 @@ body {
   position: fixed;
   margin-top: 0px;
   margin-bottom: 0px;
-  opacity: 1.0; }
+  opacity: 1.0;
+  z-index: 10; }
   .place_kaset_class .col_place_kaset {
     box-sizing: border-box;
     margin: 2% 10%;
