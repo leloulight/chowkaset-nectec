@@ -5,7 +5,7 @@
 					<nav class="gn-menu-wrapper">
 						<div class="gn-scroller">
 							<ul class="gn-menu">
-								<li><a class="gn-icon gn-icon-searchs sidebarbtn" data-side="left" data-action="toggle">ค้นหา</a></li>
+								<!--<li><a class="gn-icon gn-icon-searchs sidebarbtn" data-side="left" data-action="toggle">ค้นหา</a></li>-->
 								<li><a class="gn-icon gn-icon-download" id="LoginChowkasetSide">เข้าสู่ระบบ</a></li>
 								<li><a class="gn-icon gn-icon-help" href="{{ URL::to('/chatkaset') }}">ห้องพูดคุยเกษตร</a></li>
 							</ul>
@@ -18,11 +18,10 @@
 					<nav class="gn-menu-wrapper">
 						<div class="gn-scroller">
 							<ul class="gn-menu">
-							<li><a class="gn-icon gn-icon-searchs sidebarbtn" data-side="left" data-action="toggle">ค้นหา</a></li>
 							@if(Auth::user()->typeuser_id=='1')
 								<li><a class="gn-icon gn-icon-download" href="{{ URL::to('/home') }}">หน้าหลัก</a></li>
-								<li id="farm_management"><a class="gn-icon gn-icon-cog">จัดการข้อมูลการเพาะปลูก</a></li>
-								<li><a class="gn-icon gn-icon-cog" href="{{ URL::to('/chatkaset') }}">ห้องพูดคุยเกษตร</a></li>
+								<li id="farm_management"><a class="gn-icon gn-icon-article">จัดการข้อมูลการเพาะปลูก</a></li>
+								<li><a class="gn-icon gn-icon-help" href="{{ URL::to('/chatkaset') }}">ห้องพูดคุยเกษตร</a></li>
 							@elseif(Auth::user()->typeuser_id=='2')
 								<li><a class="gn-icon gn-icon-download" href="{{ URL::to('/home') }}">หน้าหลัก</a></li>
 								<li href="">
@@ -34,8 +33,8 @@
 									<a class="gn-icon gn-icon-download">ข้อมูลฟาร์มตนเอง</a>
 								</li>-->
 								<li><a class="gn-icon gn-icon-download" href="{{ URL::to('/home') }}">หน้าหลัก</a></li>
-								<li id="farm_management"><a class="gn-icon gn-icon-cog">จัดการข้อมูลการเพาะปลูก</a></li>
-								<li><a class="gn-icon gn-icon-cog" href="{{ URL::to('/chatkaset') }}">ห้องพูดคุยเกษตร</a></li>
+								<li id="farm_management"><a class="gn-icon gn-icon-article">จัดการข้อมูลการเพาะปลูก</a></li>
+								<li><a class="gn-icon gn-icon-help" href="{{ URL::to('/chatkaset') }}">ห้องพูดคุยเกษตร</a></li>
 							@endif
 							</ul>
 						</div><!-- /gn-scroller -->
