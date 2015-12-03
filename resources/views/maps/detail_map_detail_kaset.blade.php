@@ -413,7 +413,7 @@
 						   	  		var thisdate = newDayAddNumber(new_first_date,value.cpc_start);
 								   	var nextday=newDayAdd(new_first_date,value.cpc_start);
 								   	console.log (value.cpc_detail+'  '+thisdate);
-								   	console.log ('e'+' '+new_first_date+' '+value.cpc_start);
+								   	console.log ('da'+' '+new_first_date+' '+value.cpc_start);
 								   	if(thisdate==today_show){
 								   		opt += '<td>วันนี้</td>';
 								   	}else{
