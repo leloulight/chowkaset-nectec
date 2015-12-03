@@ -198,8 +198,8 @@ function account_table(id_acc){
 			    					tr.appendChild(td);
 			    					var td = document.createElement('td');
 			    					if(data.data[count].acc_cost_type=='1'){ 
-			    						money_income = eval(money_income+data.data[count].acc_price);
-			    						money_total = eval(money_total+data.data[count].acc_price);
+			    						money_income = parseFloat(money_income)+parseFloat(data.data[count].acc_price);
+			    						money_total = parseFloat(money_total)+parseFloat(data.data[count].acc_price);
 			    						td.innerHTML = price_change(data.data[count].acc_price); 
 			    					}else{
 			    						td.innerHTML = '-';
@@ -207,9 +207,9 @@ function account_table(id_acc){
 			    					tr.appendChild(td);
 			    					var td = document.createElement('td');
 			    					if(data.data[count].acc_cost_type=='2'){ 
-			    						money_outcome = eval(money_outcome+data.data[count].acc_price);
-			    						money_total = eval(money_total+data.data[count].acc_price);
-			    						m = eval(data.data[count].acc_price*-1);
+			    						money_outcome = parseFloat(money_outcome)+parseFloat(data.data[count].acc_price);
+			    						money_total = parseFloat(money_total)+parseFloat(data.data[count].acc_price);
+			    						m = parseFloat(data.data[count].acc_price*-1);
 			    						td.innerHTML = price_change(m); 
 			    					}else{
 			    						td.innerHTML = '-';
