@@ -106,9 +106,15 @@ class AuthController extends Controller
 
         $authUser = $this->findOrCreateUser($user);
         //dd($authUser);
+        //
         Auth::login($authUser, true);
-
-        return Redirect::to('/home');
+        $user_id = Auth::user()->id;
+        $profile = Profiles::where('user_id','=',$user_id)->first();
+        if(!$profile){
+          return Redirect::to('/auth/profile');
+        }else{
+          return Redirect::to('/home');
+        }
     }
 
     /**
@@ -155,7 +161,7 @@ class AuthController extends Controller
                     'typeuser_id' => $request->input('typeuser_id'),
                     'name' => $request->input('name'),
                     'email' => $request->input('email'),
-                    'picture' => public_path('assets/img/profileImage/').$fileName
+                    'picture' => 'assets/img/profileImage/'.$fileName
                 ]);
             }else{
                 $password = Hash::make($request->input('pass_confirmation'));
@@ -166,14 +172,14 @@ class AuthController extends Controller
                     'typeuser_id' => $request->input('typeuser_id'),
                     'name' => $request->input('name'),
                     'email' => $request->input('email'),
-                    'picture' => public_path('assets/img/user.jpg'),
+                    'picture' => 'assets/img/user.jpg',
                 ]);
             }
             //return dd($request->file('Picture'));
             Auth::login($RegisterData, true);
         } catch (Exception $e) {
         }
-        return Redirect::to('/home');
+        return Redirect::to('/auth/profile');
     }
     public function postLogin(Request $request){
         try {

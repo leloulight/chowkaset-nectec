@@ -9,7 +9,7 @@
 									<input placeholder="ค้นหา" type="search" class="gn-search">
 									<a class="gn-icon gn-icon-search"><span>Search</span></a>
 								</li>
-								<li><a class="gn-icon gn-icon-cog" onclick="loginForm()">เข้าสู่ระบบ</a></li>
+								<li><a class="gn-icon gn-icon-cog" id="LoginChowkasetSide">เข้าสู่ระบบ</a></li>
 								<li><a class="gn-icon gn-icon-cog" href="{{ URL::to('/chatkaset') }}">ห้องพูดคุยเกษตร</a></li>
 								<li><a class="gn-icon gn-icon-help">ช่วยเหลือ</a></li>
 							</ul>
@@ -48,7 +48,7 @@
 				</li>
 				@else
 				<li class="dropdown clear-nav-style codrops-icon codrops-icon-drop">
-		          <a href="#" class="dropdown-toggle login-col login-col-size" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img class="img-nav" src="{{ Auth::user()->picture }}">{{ " ".Auth::user()->name }}<span class="caret"></span></a>
+		          <a href="#" class="dropdown-toggle login-col login-col-size" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img class="img-nav" src="{{ url(Auth::user()->picture )}}">{{ " ".Auth::user()->name }}<span class="caret"></span></a>
 		          <ul class="dropdown-menu">
 		            <!--<li><a href="#">เปลี่ยนรหัสผ่าน</a></li>-->
 		            <li><a href="{{ URL::to('auth/profile') }}">แก้ใขข้อมูลส่วนตัว</a></li>
@@ -60,6 +60,9 @@
 			</ul>
 			<script>
 				$( "#LoginChowkaset" ).click(function() {
+					loginMenu();
+				});
+				$( "#LoginChowkasetSide" ).click(function() {
 					loginMenu();
 				});
 			</script>

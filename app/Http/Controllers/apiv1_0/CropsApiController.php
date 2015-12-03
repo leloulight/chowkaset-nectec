@@ -139,7 +139,7 @@ class CropsApiController extends Controller
                   'status'  => '1',
                   'data' => $dataCrops,
                   'sum_acc' => $sumacc,
-                  'sum_pbm' => $sumpbm,
+                  'sum_pbm' => number_format($sumpbm),
                 ];
             }else{
                 $response = [

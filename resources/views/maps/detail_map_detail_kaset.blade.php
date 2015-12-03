@@ -4,7 +4,7 @@
 	   <div id="farm_management_console">
 		<div id="id_farm_management_menu" class="farm_management_menu col-md-1">
 			<ul class="nav nav-pills">
-				<li class="active"><a data-toggle="pill" href="#farm_detail"><i class="fa fa-desktop"></i><p>ข้อมูลการเกษตร</p></a>
+				<li class="active"><a data-toggle="pill" href="#farm_detail" id="click_kaset_show"><i class="fa fa-desktop"></i><p>ข้อมูลการการเพาะปลูก</p></a>
 				</li><li><a data-toggle="pill" href="#farm_account"><i class="fa fa-pencil-square-o "></i><p>บัญชีการเพาะปลูก</p></a></li>
 				<li href="#menu2"><a data-toggle="pill" href="#farm_problem"><i class="fa fa-exclamation"></i><p>ปัญหาการเพาะปลูก</p></a></li>
 				<li><a data-toggle="pill" onclick="close_farm_management_console();"><i class="fa fa-times"></i><p>ปิด</p></a></li>
@@ -148,6 +148,9 @@
 <script>
 	$('#dpd1').datepicker('setValue', new Date());
 	$(document).ready(function(){
+		$("#farm_detail_crops_list").empty();	
+		$("#progress_management_detail_tab").empty();
+		$('#show_calendar_management').empty();
 		$.ajax({
 					url: site_url+"/api/v1.0/Crop/getCropsOfUser/"+user_id
 				}).then(function(data) {
@@ -183,7 +186,109 @@
 							opt += '<div class="sum_show_in_detail_tab">';
 							opt += '<div class="sum_list col-md-4">';
 							opt += '<h2>เงินรวม</h2>';
-							opt += '<h4>'+details.sum_acc+'</h4>';
+							if(details.sum_acc<0){
+								opt += '<h4 style="color:red;">'+price_change(details.sum_acc)+'</h4>';
+							}else{
+								opt += '<h4 style="color:#16a085;">'+price_change(details.sum_acc)+'</h4>';
+							}
+							opt += '</div>';
+							opt += '<div class="sum_list col-md-4">';
+							opt += '<h2>ปัญหา</h2>';
+							opt += '<h4>'+details.sum_pbm+'</h4>';
+							opt += '</div>';
+							opt += '<div class="sum_list col-md-4">';
+							opt += '<h2>พร้อมเก็บ</h2>';
+							var first_date = details.data[0].crop_start_date;
+							var crop_date_duration = details.data[0].cp_duration;
+						   	var res = first_date.split("-");
+							var new_first_date = res[1]+'/'+res[2]+'/'+res[0];
+							var dateCrops=newDayAdd(new_first_date,120);
+							opt += '<h4>'+dateCrops+'</h4>';
+							opt += '</div>';
+							opt += '</div>';
+							opt += '</div>';
+							count++;
+					$('#progress_management_detail_tab').html(opt);
+						$.ajax({
+							url: site_url+"/api/v1.0/Crop/getPlansOfUserDetailList/"+data.data[0].crop_id
+						}).then(function(details) {
+							var first_date = details.start_crop;
+							var res = first_date.split("-");
+						   	var new_first_date = res[1]+'/'+res[2]+'/'+res[0];
+							var firstday=newDayAdd(new_first_date,0);
+							if(new_first_date==today_show){
+								var opt = '<tr><td>วันนี้</td>';
+								opt += '<td>วันเริ่มต้นเพาะปลูก</td><td></td></tr>';
+							}else{
+								var opt = '<tr><td>'+firstday+'</td>';
+								opt += '<td>วันเริ่มต้นเพาะปลูก</td><td></td></tr>';
+							}
+						   	  	$.each(details.data, function(index, value) {
+						   	  		opt += '<tr>';
+						   	  		var first_date = details.start_crop;
+						   	  		var res = first_date.split("-");
+						   	  		var new_first_date = res[1]+'/'+res[2]+'/'+res[0];
+						   	  		var thisdate = newDayAddNumber(new_first_date,value.cpc_start);
+						alert(thisdate);
+								   	var nextday=newDayAdd(new_first_date,value.cpc_start);
+								   	if(thisdate==today_show){
+								   		opt += '<td>วันนี้</td>';
+								   	}else{
+								   		opt += '<td>'+nextday+'</td>';
+								   	}
+								   	opt += '<td>'+value.cpc_detail+'</td>';
+								   	opt += '<td>'+value.cpty_name+'</td>';
+								   	opt += '</tr>';
+						   	 	 });
+						$('#show_calendar_management').html(opt);
+						});
+					});
+					}
+			});
+		$("#click_kaset_show").click(function(){
+		$("#farm_detail_crops_list").empty();	
+		$("#progress_management_detail_tab").empty();
+		$('#show_calendar_management').empty();
+			$.ajax({
+					url: site_url+"/api/v1.0/Crop/getCropsOfUser/"+user_id
+				}).then(function(data) {
+					var i = 0;
+					var count = 0;
+					if(data.status=='0'){
+					}else{
+					var id_default = data.data[0].crop_id;
+						for(i=0;i<data.data.length;i++){
+						var option_choose = document.createElement('option');
+			    		option_choose.setAttribute('value',data.data[count].crop_id);
+			    		option_choose.innerHTML = data.data[count].crop_name;
+			    		document.getElementById('farm_detail_crops_list').appendChild(option_choose);
+			    		count++;
+						}
+					$.ajax({
+						url: site_url+"/api/v1.0/Crop/getCropsOfUserDetailList/"+data.data[0].crop_id
+					}).then(function(details) {
+					   	  var opt = '';
+					   	  var count = 1;
+					   	  	if(count==1){
+					   	  		opt += '<div id="detail_progress_'+count+'" class="tab-pane fade in active">';
+					   	  	}else{
+					   	  		opt += '<div id="detail_progress_'+count+'" class="tab-pane fade">';
+							}
+							opt += '<div class="progress_show_in_detail_tab">';
+							opt += '<h1>'+details.data[0].seed_name+'</h1>';
+							opt += '<h2>'+details.data[0].breed_name+' ('+details.data[0].crop_rai+' ไร่ '+details.data[0].crop_ngarn+' งาน '+details.data[0].crop_wah+' ตารางวา)</h2>';
+							opt += '<h3>'+details.data[0].cp_name+'</h3>';
+							//opt += '<h5>ผู้ติดตาม : </h5>';
+							opt += '<h3> โดย '+details.data[0].cp_owner+'</h3>';
+							opt += '</div>';
+							opt += '<div class="sum_show_in_detail_tab">';
+							opt += '<div class="sum_list col-md-4">';
+							opt += '<h2>เงินรวม</h2>';
+							if(details.sum_acc<0){
+								opt += '<h4 style="color:red;">'+price_change(details.sum_acc)+'</h4>';
+							}else{
+								opt += '<h4 style="color:#16a085;">'+price_change(details.sum_acc)+'</h4>';
+							}
 							opt += '</div>';
 							opt += '<div class="sum_list col-md-4">';
 							opt += '<h2>ปัญหา</h2>';
@@ -238,6 +343,7 @@
 					});
 					}
 			});
+		});
 		$("#farm_detail_crops_list").change(function(){
 		$("#progress_management_detail_tab").empty();
 		$('#show_calendar_management').empty();
@@ -261,8 +367,11 @@
 							opt += '<div class="sum_show_in_detail_tab">';
 							opt += '<div class="sum_list col-md-4">';
 							opt += '<h2>เงินรวม</h2>';
-							var acc = details.sum_acc;
-							opt += '<h4>'+acc+'</h4>';
+							if(details.sum_acc<0){
+								opt += '<h4 style="color:red;">'+price_change(details.sum_acc)+'</h4>';
+							}else{
+								opt += '<h4 style="color:#16a085;">'+price_change(details.sum_acc)+'</h4>';
+							}
 							opt += '</div>';
 							opt += '<div class="sum_list col-md-4">';
 							opt += '<h2>ปัญหา</h2>';

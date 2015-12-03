@@ -17,14 +17,14 @@
 <!-- Detail map Detail Crop in Map  Area -->
     @include('maps.detail_map_detail_kaset')
     
-<!-- Sidebar Area -->
+<!-- Sidebar Area
 <div class="sidebar-area" style="width: 30%;height: 100%;">
   <div class="sidebars">
     <div style="height:100%;position:fixed;width: 25%;" class="sidebar left">
       @include('maps.map_config_sidebar')
     </div>
   </div>
-</div>
+</div> -->
 
   <script type="text/javascript">
     if (window.location.hash && window.location.hash == '#_=_') {
