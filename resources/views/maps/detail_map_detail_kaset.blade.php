@@ -229,7 +229,7 @@
 						   	  		var res = first_date.split("-");
 						   	  		var new_first_date = res[1]+'/'+res[2]+'/'+res[0];
 						   	  		var thisdate = newDayAddNumber(new_first_date,value.cpc_start);
-						alert(thisdate);
+						   	  		console.log (value.cpc_detail+thisdate);
 								   	var nextday=newDayAdd(new_first_date,value.cpc_start);
 								   	if(thisdate==today_show){
 								   		opt += '<td>วันนี้</td>';
@@ -328,6 +328,7 @@
 						   	  		var new_first_date = res[1]+'/'+res[2]+'/'+res[0];
 						   	  		var thisdate = newDayAddNumber(new_first_date,value.cpc_start);
 								   	var nextday=newDayAdd(new_first_date,value.cpc_start);
+								   	console.log (value.cpc_detail+thisdate);
 								   	if(thisdate==today_show){
 								   		opt += '<td>วันนี้</td>';
 								   	}else{
@@ -411,6 +412,8 @@
 						   	  		var new_first_date = res[1]+'/'+res[2]+'/'+res[0];
 						   	  		var thisdate = newDayAddNumber(new_first_date,value.cpc_start);
 								   	var nextday=newDayAdd(new_first_date,value.cpc_start);
+								   	console.log (value.cpc_detail+'  '+thisdate);
+								   	console.log ('e'+' '+new_first_date+' '+value.cpc_start);
 								   	if(thisdate==today_show){
 								   		opt += '<td>วันนี้</td>';
 								   	}else{
