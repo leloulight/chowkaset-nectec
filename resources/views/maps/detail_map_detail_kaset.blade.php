@@ -56,6 +56,7 @@
 					<div class="col-md-12 wrap_card">
 						<div id="market_management" class="card_menu">
 							<div class="header_card" style="background-color: #f0ad4e;">การเพาะปลูก</div>
+							<img style="width:100%;heigth: 100%;" src="{{ url('assets/img/ganttcharts.png') }}">
 						</div>
 					</div>
 				</div>
