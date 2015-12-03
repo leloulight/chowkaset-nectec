@@ -23,7 +23,7 @@ body {
   background-color: #5CB85C;
   color: white; }
   .map_search_header .text-search {
-    width: 83%;
+    width: 100%;
     background-color: #5CB85C;
     float: left; }
     .map_search_header .text-search h1 {

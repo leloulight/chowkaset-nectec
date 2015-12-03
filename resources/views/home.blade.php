@@ -20,7 +20,7 @@
 <!-- Sidebar Area-->
 <div class="sidebar-area" style="width: 30%;height: 100%;">
   <div class="sidebars">
-    <div style="height:100%;position:fixed;width: 25%;" class="sidebar left">
+    <div style="height:100%;position:fixed;width: 25%;margin-left: 75%;" class="sidebar left">
       @include('maps.map_config_sidebar')
     </div>
   </div>
@@ -31,26 +31,4 @@
         window.location.hash = '';
     }
   </script>
-  <script>
-
-    $(document).ready(function () {
-    // All sides
-    var sides = ["left", "top", "right", "bottom"];
-    $("h1 span.version").text($.fn.sidebar.version);
-
-    // Initialize sidebars
-    for (var i = 0; i < sides.length; ++i) {
-        var cSide = sides[i];
-        $(".sidebar." + cSide).sidebar({side: cSide});
-    }
-
-    // Click handlers
-    $(".sidebarbtn[data-action]").on("click", function () {
-        var $this = $(this);
-        var action = $this.attr("data-action");
-        var side = $this.attr("data-side");
-        $(".sidebar." + side).trigger("sidebar:" + action);
-        return false;
-    });
-});</script>
 @stop
