@@ -2,7 +2,6 @@
 		<div class="map_search_header">
 			<div class="text-search"><h1>ตั้งค่าแผนที่เพาะปลูก</h1></div>
 			<div class="button-search">
-			<a href="#" class="btn" data-action="toggle" data-side="left"><i class="fa fa-search"></i></a>
 			</div>
 		</div>
 		<div class="map_search_tab">
@@ -61,9 +60,9 @@
 			<div class="side-by-side clearfix">
 			  <div class="form-group" style="margin-top: 15px;">
 		    	<label>จังหวัด : </label>
-			    <select data-placeholder="เลือกชนิดพืช" class="chosen-select" tabindex="2">
-	            <option value=""></option>
-	            <option value="444">ข้าว</option>
+			    <select data-placeholder="เลือกชนิดพืช" class="form-control" tabindex="2">
+	            <option value="1">กำแพงเพชร</option>
+	            <option value="2">กรุงเทพ</option>
 	    		</select>
 			  </div>
 			 </div>

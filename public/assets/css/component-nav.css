@@ -236,6 +236,9 @@ input.gn-search:focus {
 .gn-icon-cog::before {
 		content: "\e006"
 }
+.gn-icon-searchs::before {
+		content: "\e005"
+}
 
 .gn-icon-search::before {
 		content: "\e005"

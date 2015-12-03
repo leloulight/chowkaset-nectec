@@ -32,6 +32,7 @@
     }
   </script>
   <script>
+
     $(document).ready(function () {
     // All sides
     var sides = ["left", "top", "right", "bottom"];
@@ -44,7 +45,7 @@
     }
 
     // Click handlers
-    $(".btn[data-action]").on("click", function () {
+    $(".sidebarbtn[data-action]").on("click", function () {
         var $this = $(this);
         var action = $this.attr("data-action");
         var side = $this.attr("data-side");

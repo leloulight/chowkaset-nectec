@@ -53,12 +53,11 @@
 						</div>
 						</div>
 					</div>
-					<!--
 					<div class="col-md-12 wrap_card">
 						<div id="market_management" class="card_menu">
 							<div class="header_card" style="background-color: #f0ad4e;">การเพาะปลูก</div>
 						</div>
-					</div>-->
+					</div>
 				</div>
 				<div id="farm_account" class="tab-pane fade">
 					<div class="col-md-12 wrap_card">
