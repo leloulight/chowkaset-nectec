@@ -615,6 +615,7 @@ function problem_table(id_prb){
 					    		var inp_descript = document.createElement('textarea');
 					    		inp_descript.style.width = '100%';
 					    		inp_descript.setAttribute('class','form-control');
+					    		inp_descript.setAttribute('validation','required');
 					    		inp_descript.setAttribute('name','pbm_detail');
 					    		inp_descript.setAttribute('placeholder','ปัญหาที่พบ');
 					    		div_in.appendChild(inp_descript);
@@ -624,7 +625,6 @@ function problem_table(id_prb){
 				    		button_add_problem.setAttribute('class','btn btn-success btn_add_problem');
 				    		button_add_problem.innerHTML = 'เพิ่มปัญหา';
 				    		form_problem.appendChild(button_add_problem);
-
 		    		//ปัญหา
 		    		var table_content = document.createElement('table');
 		    		table_content.setAttribute('class','table table-bordered');
@@ -701,7 +701,10 @@ function dialog_add_problem(){
 	var $form = $('#add_form_problem'),
 	add_pbm_detail = $form.find( "textarea[name='pbm_detail']" ).val(),
 	add_pbm_crop_id = $form.find( "input[name='pbm_crop_id']" ).val();
-	$.ajax({
+	if(add_pbm_detail==''||add_pbm_detail==null){
+		alert('กรุณากรอกข้อมูล');
+	}else{
+		$.ajax({
 	    url: site_url+'/api/v1.0/Crop/AddProblemData',
 	    type: 'post',
 	    headers: {
@@ -715,6 +718,7 @@ function dialog_add_problem(){
 	        problem_table(add_pbm_crop_id);
 	    }
 	});
+	}
 }
 function dialog_delete_problem(dlt_id){
 	var $form = $('#add_form_problem'),

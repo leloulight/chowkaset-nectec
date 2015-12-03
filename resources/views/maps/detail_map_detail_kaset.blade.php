@@ -75,7 +75,7 @@
 							<input type="input" id="dpd1" class="form-control" data-date-format="dd-mm-yyyy" name="acc_date" style="width: 100%;">
 						</div>
 						<div class="col-md-5">
-							<input type="input" class="form-control" name="acc_detail" placeholder="รายละเอียด" style="width: 100%;">
+							<input type="input" class="form-control" name="acc_detail" placeholder="รายละเอียด" style="width: 100%;" validation="required">
 						</div>
 						<div class="col-md-2">
 							<select class="form-control" name="acc_cost_type" style="width: 100%;">
@@ -84,7 +84,7 @@
 							</select>
 						</div>
 						<div class="col-md-2">
-							<input type="input" class="form-control" name="acc_price" onchange="dokeyup(this)" onkeyup="dokeyup(this)" onkeypress="checknumber()" placeholder="จำนวนเงิน (บาท)" style="width: 100%;">
+							<input type="input" class="form-control" name="acc_price" onchange="dokeyup(this)" onkeyup="dokeyup(this)" onkeypress="checknumber()" placeholder="จำนวนเงิน (บาท)" style="width: 100%;" validation="required">
 						</div>
 							<button type="button" class="btn btn-success btn_add_account" onclick="dialog_add_income();">เพิ่มข้อมูล</button>
 							</form>
@@ -119,7 +119,7 @@
 						<div class="farm_problem_content">
 						<input type="hidden" name="pbm_crop_id" value="37">
 						<div class="col-md-12" style="margin-bottom: 15px;">
-							<textarea class="form-control" name="pbm_detail" placeholder="ปัญหาที่พบ" style="width: 100%;"></textarea>
+							<textarea class="form-control" name="pbm_detail" placeholder="ปัญหาที่พบ" style="width: 100%;" validation="required"></textarea>
 						</div>
 							<button type="button" onclick="dialog_add_problem();" class="btn btn-success btn_add_problem">เพิ่มปัญหา</button>
 						<table class="table table-bordered">
