@@ -820,13 +820,13 @@ function edit_problem_table(id_prb,edt_id){
 							"เมษายน","พฤษภาคม","มิถุนายน", "กรกฎาคม","สิงหาคม","กันยายน",
 							"ตุลาคม","พฤศจิกายน","ธันวาคม");
 			    			for(i=0;i<data.data.length;i++){
-			    				if(edt_id==data.data[count].pbm_id){
+			    				if(edt_id==data.data[count].tp_id){
 			    					var tr = document.createElement('tr');
 			    					tr.setAttribute('id','tr_field_edit_problem');
-			    					tr.innerHTML = '<input type="hidden" name="edt_pbm_id" value="'+data.data[count].pbm_id+'">';
+			    					tr.innerHTML = '<input type="hidden" name="edt_pbm_id" value="'+data.data[count].tp_id+'">';
 			    					tbody.appendChild(tr);
 			    					var td = document.createElement('td');
-			    					var accdate = data.data[count].pbm_date;
+			    					var accdate = data.data[count].created_at;
 			    					var text = accdate.split("-");
 			    					var year = parseInt(text[0]);
 			    					var month = parseInt(text[1]);
@@ -835,7 +835,7 @@ function edit_problem_table(id_prb,edt_id){
 			    					td.innerHTML = day+' '+thmonth[month-1]+' '+year;
 			    					tr.appendChild(td);
 			    					var td = document.createElement('td');
-			    					td.innerHTML = '<textarea name="edt_pbm_detail" class="form-control" width="100%">'+data.data[count].pbm_detail+'</textarea>';
+			    					td.innerHTML = '<textarea name="edt_pbm_detail" class="form-control" width="100%">'+data.data[count].tp_title+'</textarea>';
 			    					tr.appendChild(td);
 			    					var td = document.createElement('td');
 			    						td.innerHTML = 'แก้ใข';
@@ -850,7 +850,7 @@ function edit_problem_table(id_prb,edt_id){
 			    					var tr = document.createElement('tr');
 			    					tbody.appendChild(tr);
 			    					var td = document.createElement('td');
-			    					var accdate = data.data[count].pbm_date;
+			    					var accdate = data.data[count].created_at;
 			    					var text = accdate.split("-");
 			    					var year = parseInt(text[0]);
 			    					var month = parseInt(text[1]);
@@ -873,7 +873,7 @@ function edit_problem_table(id_prb,edt_id){
 			    					}
 			    					tr.appendChild(td);
 			    					var td = document.createElement('td');
-			    					td.innerHTML = '<a onclick="edit_problem_table('+id_prb+','+data.data[count].pbm_id+')" title="แก้ไข"><i class="fa fa-pencil-square edit_acc"></i></a><a onclick="dialog_delete_problem('+data.data[count].pbm_id+')" title="ลบ"><i class="fa fa-trash delete_acc"></i></a>';
+			    					td.innerHTML = '<a onclick="edit_problem_table('+id_prb+','+data.data[count].tp_id+')" title="แก้ไข"><i class="fa fa-pencil-square edit_acc"></i></a><a onclick="dialog_delete_problem('+data.data[count].tp_id+')" title="ลบ"><i class="fa fa-trash delete_acc"></i></a>';
 			    					tr.appendChild(td);
 			    					count++;
 			    				}
@@ -905,8 +905,8 @@ function dialog_edit_problem(){
         },
 	    data: {
 	    	_method:"PUT",
-	    	edt_pbm_id: edt_pbm_id,
-	    	edt_pbm_detail: edt_pbm_detail,
+	    	iedt_pbm_id: edt_pbm_id,
+	    	iedt_pbm_detail: edt_pbm_detail,
 	    },
 	    success: function (data) {
 	        problem_table(val_pbm_crop_id);

@@ -371,8 +371,8 @@ class CropsApiController extends Controller
     public function EditProblemData(Request $request)
     {    
         $statusCode = 200;
-            $dataAccount = DB::table('crop_problems')->where('pbm_id', $request->input('edt_pbm_id'))
-            ->update(['pbm_detail'=> $request->input('edt_pbm_detail'),'pbm_status'=>'0']
+            $dataAccount = DB::table('topics')->where('topics.tp_id','=', $request->input('iedt_pbm_id'))
+            ->update(['tp_title'=> $request->input('iedt_pbm_detail'),'tp_status'=>'0']
             );
         if($dataAccount){
             $response = [
@@ -390,7 +390,7 @@ class CropsApiController extends Controller
     {
         $statusCode = 200;
         $dlt_pbm_id = $request->input('dlt_pbm_id');
-        $dataAccount = DB::table('crop_problems')->where('pbm_id', '=', $dlt_pbm_id)->delete();
+        $dataAccount = DB::table('topics')->where('topics.tp_id', '=', $dlt_pbm_id)->delete();
         if($dataAccount){
             $response = [
                   'status'  => '1','massage' =>'Delete Complete!'
