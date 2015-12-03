@@ -511,7 +511,11 @@ function dialog_add_income(){
 	val_acc_detail = $form.find( "input[name='acc_detail']" ).val(),
 	val_acc_price = $form.find( "input[name='acc_price']" ).val(),
 	val_acc_cost_type = $form.find( "select[name='acc_cost_type']" ).val();
-	$.ajax({
+	if(val_acc_detail==''||val_acc_price==''){
+		alert('กรุณากรอกข้อมูล');
+	}
+	else{
+		$.ajax({
 	    url: site_url+'/api/v1.0/Crop/AddAccountData',
 	    type: 'post',
 	    headers: {
@@ -527,7 +531,8 @@ function dialog_add_income(){
 	    success: function (data) {
 	        account_table(val_acc_crop_id);
 	    }
-	});
+		});
+	}
 }
 function dialog_delete_income(dlt_id){
 	var $form = $('#add_form_account'),
