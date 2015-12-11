@@ -23,7 +23,7 @@
 						<label for="seeds">พืชที่ปลูก</label>
 					</div>
 					<div class="col-md-12">
-					        <select data-placeholder="พืชที่ปลูก" class="form-control" id="seeds_area"name="seed" style="margin-bottom: 10px;"> 
+					        <select data-placeholder="พืชที่ปลูก" class="form-control" id="seeds_area"name="seed" style="margin-bottom: 10px;">
 				    		</select>
 					</div>
 				</div>
@@ -39,10 +39,10 @@
 
 				<div class="form-group col-md-6">
 					<div class="col-md-12">
-						<label for="seeds">แผนการเพาะปลูก</label>
+						<label for="seeds">คำแนะนำการเพาะปลูก</label>
 					</div>
 					<div class="col-md-12">
-					        <select data-placeholder="พืชที่ปลูก" class="form-control" id="plan_area" name="plan_crops_cp" style="margin-bottom: 10px;"> 
+					        <select data-placeholder="พืชที่ปลูก" class="form-control" id="plan_area" name="plan_crops_cp" style="margin-bottom: 10px;">
 				    		</select>
 					</div>
 				</div>
@@ -120,8 +120,8 @@ $.ajax({
 							   	});
 							}
 							$("#plan_area").html(opt);
-						});	
-				});	
+						});
+				});
 });
 	$("#seeds_area").change(function(){
 		$("#breeds_area").empty();
@@ -149,8 +149,8 @@ $.ajax({
 					   	});
 					}
 					$("#plan_area").html(opt);
-				});	
-		});	
+				});
+		});
 	});
 	$("#breeds_area").change(function(){
 				   	  $.ajax({
@@ -165,6 +165,6 @@ $.ajax({
 							   	});
 							}
 							$("#plan_area").html(opt);
-						});	
+						});
 	});
 </script>
