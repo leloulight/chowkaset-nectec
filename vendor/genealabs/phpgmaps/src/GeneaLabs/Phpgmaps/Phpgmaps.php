@@ -50,7 +50,7 @@ class Phpgmaps
     public $map_types_available = array();                    // The other MapTypes available for selection on the map
     public $map_width = "100%";                    // The width of the map container. Any units (ie 'px') can be used. If no units are provided 'px' will be presumed
     public $maps_loaded = 0;                        // Counter which keeps track of how many maps have been created to avoid standard functions being output twice
-    public $mapTypeControlPosition = 'LEFT_TOP';                        // The position of the MapType control, eg. 'BOTTOM_RIGHT'
+    public $mapTypeControlPosition = 'RIGHT_TOP';                        // The position of the MapType control, eg. 'BOTTOM_RIGHT'
     public $mapTypeControlStyle = '';                        // The style of the MapType control. blank, 'DROPDOWN_MENU' or 'HORIZONTAL_BAR' values accepted.
     public $minzoom = '';                        // The minimum zoom level which will be displayed on the map
     public $maxzoom = '';                        // The maximum zoom level which will be displayed on the map
@@ -131,7 +131,7 @@ class Phpgmaps
     public $streetViewPovPitch = 0;                        // The Street View camera pitch in degrees, relative to the street view vehicle. Directly upwards is 90, Directly downwards is -90.
     public $streetViewPovZoom = 0;                        // The Street View zoom level. Fully zoomed-out is level 0, zooming in increases the zoom level.
     public $streetViewZoomControl = true;                        // If set to FALSE will hide the Zoom control
-    public $streetViewZoomPosition = 'LEFT_CENTER';                        // The position of the Scale control, eg. 'TOP_RIGHT'
+    public $streetViewZoomPosition = 'RIGHT_CENTER';                        // The position of the Scale control, eg. 'TOP_RIGHT'
     public $streetViewZoomStyle = '';                        // The size of the Street View zoom control. blank, 'SMALL' or 'LARGE' values accepted.
     public $styles = array();                    // An array of styles used to colour aspects of the map and turn points of interest on and off
     public $stylesAsMapTypes = false;                    // If applying styles, whether to apply them to the default map or add them as additional map types
@@ -140,7 +140,7 @@ class Phpgmaps
     public $trafficOverlay = false;                    // If set to TRUE will overlay traffic information onto the map by default
     public $version = "3";                        // Version of the API being used. Not currently used in the library
     public $zoom = 7;                        // The default zoom level of the map. If set to "auto" will autozoom/center to fit in all visible markers. If "auto", also overrides the $center parameter
-    public $zoomControlPosition = 'LEFT_CENTER';                        // The position of the Zoom control, eg. 'BOTTOM_RIGHT'
+    public $zoomControlPosition = 'RIGHT_CENTER';                        // The position of the Zoom control, eg. 'BOTTOM_RIGHT'
     public $zoomControlStyle = '';                        // The size of the zoom control. blank, 'SMALL' or 'LARGE' values accepted.
 
     public $markers = array();                    // An array used by the library to store the markers as they are produced
