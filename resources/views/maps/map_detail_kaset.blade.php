@@ -9,17 +9,6 @@
 						<img class="img-responsive" src="" id="pic_area">
 					</div>
 				</div>
-			<div class="progress_progress_area">
-				<div class="progress-kaset">
-					<div class="pre_content_progress_bar">
-						<p>ความก้าวหน้าในการเก็บเกี่ยว</p>
-					</div>
-					<div class="progress">
-						<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%;">ความก้าวหน้า 40 %
-						</div>
-					</div>
-				</div>
-			</div>
 			</div>
 		<div class="tab_controll_place" id="id_tab_controll_place">
 			<ul class="nav nav-tabs">
