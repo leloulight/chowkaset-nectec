@@ -35,7 +35,7 @@ function loginMenu(){
 				login_form.setAttribute('method','POST');
 				login_form.setAttribute('action',site_url+'/auth/login');
 				panel_body.appendChild(login_form);
-					//token csrf 
+					//token csrf
 					var tk = document.createElement('input');
 					tk.setAttribute('type','hidden');
 					tk.setAttribute('name','_token');
@@ -109,7 +109,7 @@ function loginChowkaset(){
 				login_form.setAttribute('method','POST');
 				//login_form.setAttribute('action',site_url+'/auth/chowkaset/postLogin');
 				panel_body.appendChild(login_form);
-					//token csrf 
+					//token csrf
 					var tk = document.createElement('input');
 					tk.setAttribute('type','hidden');
 					tk.setAttribute('name','_token');
@@ -241,7 +241,7 @@ function checkProfile(){
 				login_form.setAttribute('method','POST');
 				login_form.setAttribute('action',site_url+'/auth/login');
 				panel_body.appendChild(login_form);
-					//token csrf 
+					//token csrf
 					var tk = document.createElement('input');
 					tk.setAttribute('type','hidden');
 					tk.setAttribute('name','_token');
@@ -337,7 +337,7 @@ function registerChowkaset(){
 				login_form.setAttribute('action',site_url+'/auth/chowkaset/postRegister');
 				login_form.setAttribute('enctype','multipart/form-data');
 				panel_body.appendChild(login_form);
-					//token csrf 
+					//token csrf
 					var tk = document.createElement('input');
 					tk.setAttribute('type','hidden');
 					tk.setAttribute('name','_token');
@@ -444,30 +444,6 @@ function registerChowkaset(){
 						nm.setAttribute('placeholder','กรอกอีเมล์ที่ต้องการใช้งาน');
 						nm.setAttribute('data-validation','required email');
 						wrap.appendChild(nm);
-					//ประเภทผู้ใช้งาน
-					var form_group = document.createElement('div');
-					form_group.setAttribute('class','form-group');
-					login_form.appendChild(form_group);
-					var wrap = document.createElement('div');
-					wrap.setAttribute('class','col-md-12');
-					form_group.appendChild(wrap);
-					var label = document.createElement('label');
-					label.innerHTML = 'คุณคือ : ';
-					wrap.appendChild(label);
-					var select_choose = document.createElement('select');
-	    			select_choose.setAttribute('name','typeuser_id')
-	    			select_choose.setAttribute('class','form-control');
-	    			select_choose.setAttribute('data-validation','required');
-	    			wrap.appendChild(select_choose);
-	    				var option = document.createElement('option');
-	    				option.setAttribute('value','1')
-	    				option.innerHTML = 'เกษตรกร';
-	    				select_choose.appendChild(option);
-	    				var option = document.createElement('option');
-	    				option.setAttribute('value','2')
-	    				option.innerHTML = 'ผู้สนใจสินค้าการเกษตร';
-	    				select_choose.appendChild(option);
-
 					//submit button
 					var form_group = document.createElement('div');
 					form_group.setAttribute('class','form-group');
@@ -486,7 +462,7 @@ function registerChowkaset(){
 						sm.setAttribute('class','btn-cks-full btn-color-red');
 						sm.innerHTML = 'ยกเลิก';
 						wrap.appendChild(sm);
-					
+
 					$.validate({
 						modules: 'security, file',
 							onModulesLoaded: function () {
@@ -504,4 +480,3 @@ function resizeImg(input){
     reader.readAsDataURL(input.files[0]);
   }
 }
-

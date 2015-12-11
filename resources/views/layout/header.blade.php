@@ -7,6 +7,7 @@
 							<ul class="gn-menu">
 								<!--<li><a class="gn-icon gn-icon-searchs sidebarbtn" data-side="left" data-action="toggle">ค้นหา</a></li>-->
 								<li><a class="gn-icon gn-icon-download" id="LoginChowkasetSide">เข้าสู่ระบบ</a></li>
+								<li><a class="gn-icon gn-icon-download" onclick="registerChowkaset()">สมัครสมาชิก</a></li>
 								<li><a class="gn-icon gn-icon-help" href="{{ URL::to('/chatkaset') }}">ห้องพูดคุยเกษตร</a></li>
 							</ul>
 						</div><!-- /gn-scroller -->

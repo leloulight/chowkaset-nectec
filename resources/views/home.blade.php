@@ -16,7 +16,6 @@
     @include('maps.map_add_crop')
 <!-- Detail map Detail Crop in Map  Area -->
     @include('maps.detail_map_detail_kaset')
-    
 <!-- Sidebar Area-->
 <div class="sidebar-area" style="width: 30%;height: 100%;">
   <div class="sidebars">
@@ -24,7 +23,7 @@
       @include('maps.map_config_sidebar')
     </div>
   </div>
-</div> 
+</div>
 
   <script type="text/javascript">
     if (window.location.hash && window.location.hash == '#_=_') {

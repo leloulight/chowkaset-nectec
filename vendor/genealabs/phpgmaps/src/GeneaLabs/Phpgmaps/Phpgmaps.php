@@ -2,7 +2,6 @@
 use URL;
 class Phpgmaps
 {
-
     protected $output_js;
     protected $output_js_contents;
     protected $output_html;
@@ -1883,7 +1882,7 @@ class Phpgmaps
                 gridSize: '.$this->clusterGridSize;
 
 
-            
+
 
             if ($this->clusterMaxZoom != "") {
                 $this->output_js_contents .= ',

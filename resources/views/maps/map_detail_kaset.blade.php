@@ -9,6 +9,8 @@
 						<img class="img-responsive" src="" id="pic_area">
 					</div>
 				</div>
+				<label for="dateCrop">พร้อมเก็บเกี่ยว</label>
+				<span>2/4/2559</span>
 			</div>
 		<div class="tab_controll_place" id="id_tab_controll_place">
 			<ul class="nav nav-tabs">
@@ -34,7 +36,7 @@
 					<div class="form-group"><div class="col-md-12 kaset-padding-bottom">
 						<label for="tel">เบอร์โทรศัพท์</label><p id="kaset_phone"></p><hr>
 						<label for="facebook">เฟสบุ๊ก</label>
-						<div id="facebook_place">	
+						<div id="facebook_place">
 						</div>
 						<hr>
 						<label for="address">อีเมล์</label><p id="kaset_email"></p><hr class="end-form">
@@ -51,4 +53,3 @@ $( "#background_place_kaset" ).click(function() {
   $("#place_kaset").hide();
 });
 </script>
-

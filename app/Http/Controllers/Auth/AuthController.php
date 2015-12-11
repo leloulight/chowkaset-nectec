@@ -11,6 +11,7 @@ use Auth;
 use Response;
 use Hash;
 use Image;
+use Profiles;
 use DB;
 use Socialite;
 use Redirect;
@@ -142,7 +143,7 @@ class AuthController extends Controller
     /**
      * Register To Chowkaset
      *
-     * @param $request form 
+     * @param $request form
      * @return User
      */
     public function postRegister(Request $request){
@@ -213,7 +214,7 @@ class AuthController extends Controller
     /**
      * LoginCallback Security to Chowkaset By ChowkasetLogin
      *
-     * @param $requst form 
+     * @param $requst form
      * @return User
      */
     private function postLoginCallback($UserId){
