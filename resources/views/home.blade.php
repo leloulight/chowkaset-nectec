@@ -20,7 +20,7 @@
 <!-- Sidebar Area-->
 <div class="sidebar-area" style="width: 30%;height: 100%;">
   <div class="sidebars">
-    <div style="height:100%;position:fixed;width: 25%;margin-left: 75%;" class="sidebar left">
+    <div style="height:100%;position:fixed;width: 300px;" class="sidebar left">
       @include('maps.map_config_sidebar')
     </div>
   </div>
