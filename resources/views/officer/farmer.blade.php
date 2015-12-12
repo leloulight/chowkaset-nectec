@@ -194,6 +194,8 @@
 				</div>
 				</form>
 		  	</div>
+
+<!-- //////////////////////////// -->
 				<div class="col-md-12 officer-main-content" style="display:none;" id="div_farmer_edit_area">
 		  	<button id="officer_add_cancle_top_farmer" type="button" class="btn btn-danger btn-add officer_showarea_cancle_farmer">ยกเลิกดูข้อมูลเกษตรกร</button>
 		  	<form class="form-horizontal" role="form" method="post" action="{{ url('/auth/officer/addProfile/commit')}}">
@@ -289,7 +291,7 @@ function officer_farmer_edit_area(id){
 						$("#farmer_editarea_name").html(value.prefix_name+' '+value.fname+' '+value.lname);
 						$("#farmer_editarea_cardid").html(value.card_id);
 						$("#farmer_editarea_urname").html(value.member_id);
-						$("#farmer_editarea_password").html('<button type="button" class="btn btn-default" onclick="farmer_password_edit('+value.id+')">เปลี่ยนรหัสผ่าน</button>');
+						$("#farmer_editarea_password").html('<button type="button" class="btn btn-default" onclick="farmer_password_edit('+value.id+')">เปล</button>');
 						$("#farmer_editarea_address").html(value.address);
 						$("#farmer_editarea_typeuser").html(value.tu_name);
 						$("#farmer_editarea_community").html(value.fmcm_name);
