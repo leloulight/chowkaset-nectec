@@ -26,7 +26,8 @@
 				  <thead>
 				  	<tr>
 				  		<th width="5%">ลำดับ</th>
-				  		<th width="30%">ชื่อ</th>
+				  		<th width="25%">ชื่อ</th>
+							<th width="10%">ตำแหน่ง</th>
 				  		<th width="10%">เบอร์โทรศัพท์</th>
 				  		<th width="20%">อีเมล์</th>
 				  		<th width="25%">สังกัด</th>
@@ -85,10 +86,26 @@
 				    		</select>
 					      </div>
 					    </div>
+							<div class="form-group">
+					      <div class="col-md-6">
+									<select data-placeholder="เลือกประเภทเกษตรกร" class="form-control" name="typeuser_profile">
+							        <option value="3">เกษตรกร</option>
+											<option value="4">เกษตรกรปราดเปรื่อง</option>
+						    		</select>
+					      </div>
+					    </div>
 				</div>
 				<div class="panel-heading"><h2 class="head-col">ข้อมูลสังกัด</h2><hr></div>
 				<div class="panel-body">
 					<div class="form-group">
+						<div class="col-md-4 col-sm-4 col-xs-4">
+							<div class="community_offiecer">
+								<label class="radio-inline"><input type="radio" name="optcommu" value="0" onclick="officer_hide_community()" checked="checked">ไม่เป็นสมาชิกศูนย์ข้าว</label>
+								<label class="radio-inline"><input type="radio" name="optcommu" value="1" onclick="officer_show_community()">เป็นสมาชิกศูนย์ข้าว</label>
+							</div>
+						</div>
+					</div>
+					<div class="form-group" style="display:none;" id="officer_community">
 					    <div class="col-md-4 col-sm-4 col-xs-4">
 							<select data-placeholder="เลือกศูนย์ข้าว" class="form-control" id="add_farmer_farmercomunity_area" name="farmercomunity">
 					        <option value="1">เลือกศูนย์ข้าว</option>
@@ -124,6 +141,12 @@
 		  	</div>
 </div>
 <script>
+function officer_hide_community(){
+	$("#officer_community").hide();
+}
+function officer_show_community(){
+	$("#officer_community").show();
+}
 $(document).ready(function(){
 	//ค่าเริ่มต้น
 	$.ajax({
@@ -135,7 +158,7 @@ $(document).ready(function(){
 		   	  	opt += '<option value="'+value.AMPHUR_ID+'">'+value.AMPHUR_NAME+'</option>';
 		   	  });
 		   	  $("#aumphur_area").html(opt);
-		});	
+		});
 		$.ajax({
 		  url: site_url+"/api/v1.0/kaset_in_province/"+$("#province_area").val()
 		}).then(function(farmers) {
@@ -147,7 +170,8 @@ $(document).ready(function(){
 			   	  	opt += '<tr>';
 			   	  	opt += '<td>'+count+'</td>';
 			   	  	opt += '<td style="text-align: left;padding-left: 15px;">'+value.prefix_name+' '+value.fname+' '+value.lname+'</td>';
-			   	  	var phone = farmers.phone[i][0]+farmers.phone[i][1]+farmers.phone[i][2]+"-"+farmers.phone[i][3]+farmers.phone[i][4]+farmers.phone[i][5]+farmers.phone[i][6]+farmers.phone[i][7]+farmers.phone[i][8]+farmers.phone[i][9];
+							opt += '<td>'+value.tu_name+'</td>';
+							var phone = farmers.phone[i][0]+farmers.phone[i][1]+farmers.phone[i][2]+"-"+farmers.phone[i][3]+farmers.phone[i][4]+farmers.phone[i][5]+farmers.phone[i][6]+farmers.phone[i][7]+farmers.phone[i][8]+farmers.phone[i][9];
 				   	opt+= '<td>'+phone+'</td>';
 				   	opt+= '<td>'+farmers.email[i]+'</td>';
 				   	opt+= '<td>'+value.fmcm_name+'</td>';
@@ -156,7 +180,7 @@ $(document).ready(function(){
 			   	  	count ++;
 			   	  	i++;
 			   	  });
-			   	  
+
 			}else{
 				opt += '<tr><td colspan="6">ไม่มีข้อมูลเกษตรกร</td></tr>';
 			}
@@ -175,7 +199,7 @@ $(document).ready(function(){
 		   	  	opt += '<option value="'+value.AMPHUR_ID+'">'+value.AMPHUR_NAME+'</option>';
 		   	  });
 		   	  $("#aumphur_area").html(opt);
-		});	
+		});
 		$.ajax({
 		  url: site_url+"/api/v1.0/kaset_in_province/"+$("#province_area").val()
 		}).then(function(farmers) {
@@ -187,7 +211,8 @@ $(document).ready(function(){
 			   	  	opt += '<tr>';
 			   	  	opt += '<td>'+count+'</td>';
 			   	  	opt += '<td style="text-align: left;padding-left: 15px;">'+value.prefix_name+' '+value.fname+' '+value.lname+'</td>';
-				   	var phone = farmers.phone[i][0]+farmers.phone[i][1]+farmers.phone[i][2]+"-"+farmers.phone[i][3]+farmers.phone[i][4]+farmers.phone[i][5]+farmers.phone[i][6]+farmers.phone[i][7]+farmers.phone[i][8]+farmers.phone[i][9];
+
+						var phone = farmers.phone[i][0]+farmers.phone[i][1]+farmers.phone[i][2]+"-"+farmers.phone[i][3]+farmers.phone[i][4]+farmers.phone[i][5]+farmers.phone[i][6]+farmers.phone[i][7]+farmers.phone[i][8]+farmers.phone[i][9];
 				   	opt+= '<td>'+phone+'</td>';
 				   	opt+= '<td>'+farmers.email[i]+'</td>';
 				   	opt+= '<td>'+value.fmcm_name+'</td>';
@@ -196,7 +221,7 @@ $(document).ready(function(){
 			   	  	count ++;
 			   	  	i++;
 			   	  });
-			   	  
+
 			}else{
 				opt += '<tr><td colspan="6">ไม่มีข้อมูลเกษตรกร</td></tr>';
 			}
@@ -238,7 +263,7 @@ $(document).ready(function(){
 			   	  	count ++;
 			   	  	i++;
 			   	  });
-			   	  
+
 			}else{
 				opt += '<tr><td colspan="6">ไม่มีข้อมูลเกษตรกร</td></tr>';
 			}
@@ -269,7 +294,7 @@ $(document).ready(function(){
 			   	  	count ++;
 			   	  	i++;
 			   	  });
-			   	  
+
 			}else{
 				opt += '<tr><td colspan="6">ไม่มีข้อมูลเกษตรกร</td></tr>';
 			}
@@ -312,8 +337,8 @@ $(document).ready(function(){
 				   	  	opt += '<option value="'+value.DISTRICT_ID+'">'+value.DISTRICT_NAME+'</option>';
 				   	  });
 				   	  $("#add_district_area").html(opt);
-				});	
-		});	
+				});
+		});
 		$.ajax({
 		  url: site_url+"/api/v1.0/farmercomunity"
 		}).then(function(aumphurs) {
@@ -322,7 +347,7 @@ $(document).ready(function(){
 		   	  	opt += '<option value="'+value.fmcm_id+'">'+value.fmcm_name+'</option>';
 		   	  });
 		   	  $("#add_farmer_farmercomunity_area").html(opt);
-		});	
+		});
 
 	// ส่วนของจังหวัดเมื่อมีการเปลี่ยนแปลง
 	$("#add_province_area").change(function(){
@@ -344,8 +369,8 @@ $(document).ready(function(){
 				   	  	opt += '<option value="'+value.DISTRICT_ID+'">'+value.DISTRICT_NAME+'</option>';
 				   	  });
 				   	  $("#add_district_area").html(opt);
-				});	
-		});	
+				});
+		});
 	});
 	// ส่วนของอำเภอเมื่อมีการเปลี่ยนแปลง
 	$("#add_aumphur_area").change(function(){
@@ -359,7 +384,7 @@ $(document).ready(function(){
 		   	  });
 		   	  $("#add_district_area").html(opt);
 
-		});	
+		});
 	});
 });
 </script>

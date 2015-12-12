@@ -34,6 +34,8 @@ class PlaceApiController extends Controller
         $statusCode = 200;
         $kaset = DB::table('profiles')->join('prefixs','prefixs.prefix_id','=','profiles.prefix')
         ->join('farmercommunities','farmercommunities.fmcm_id','=','profiles.fmcm_id')
+        ->join('users','users.id','=','profiles.user_id')
+        ->join('typeusers','typeusers.tu_id','=','users.typeuser_id')
         ->where('profiles.user_province_code','=',$province)->get();
         //$email = DB::table('contacts')->where('tyct_type','=','2')->where('pf_id','=',$profile[0]->pf_id)->get();
         //$facebook = DB::table('contacts')->where('tyct_type','=','3')->where('pf_id','=',$profile[0]->pf_id)->get();
@@ -41,14 +43,14 @@ class PlaceApiController extends Controller
         $i=0;
         foreach ($kaset as $ks) {
             $ph = DB::table('contacts')->where('tyct_type','=','1')->where('pf_id','=',$ks->pf_id)->get();
-            $phone[$i] = $ph[0]->ct_detail; 
+            $phone[$i] = $ph[0]->ct_detail;
             $i++;
         }
         $email = [];
         $i=0;
         foreach ($kaset as $ks) {
             $ph = DB::table('contacts')->where('tyct_type','=','2')->where('pf_id','=',$ks->pf_id)->get();
-            $email[$i] = $ph[0]->ct_detail; 
+            $email[$i] = $ph[0]->ct_detail;
             $i++;
         }
         if($kaset){
@@ -77,14 +79,14 @@ class PlaceApiController extends Controller
         $i=0;
         foreach ($kaset as $ks) {
             $ph = DB::table('contacts')->where('tyct_type','=','1')->where('pf_id','=',$ks->pf_id)->get();
-            $phone[$i] = $ph[0]->ct_detail; 
+            $phone[$i] = $ph[0]->ct_detail;
             $i++;
         }
         $email = [];
         $i=0;
         foreach ($kaset as $ks) {
             $ph = DB::table('contacts')->where('tyct_type','=','2')->where('pf_id','=',$ks->pf_id)->get();
-            $email[$i] = $ph[0]->ct_detail; 
+            $email[$i] = $ph[0]->ct_detail;
             $i++;
         }
         if($kaset){
@@ -113,14 +115,14 @@ class PlaceApiController extends Controller
         $i=0;
         foreach ($kaset as $ks) {
             $ph = DB::table('contacts')->where('tyct_type','=','1')->where('pf_id','=',$ks->pf_id)->get();
-            $phone[$i] = $ph[0]->ct_detail; 
+            $phone[$i] = $ph[0]->ct_detail;
             $i++;
         }
         $email = [];
         $i=0;
         foreach ($kaset as $ks) {
             $ph = DB::table('contacts')->where('tyct_type','=','2')->where('pf_id','=',$ks->pf_id)->get();
-            $email[$i] = $ph[0]->ct_detail; 
+            $email[$i] = $ph[0]->ct_detail;
             $i++;
         }
         if($kaset){
@@ -146,7 +148,7 @@ class PlaceApiController extends Controller
         $statusCode = 200;
         $commu = DB::table('farmercommunities')
         ->where('farmercommunities.province_id','=',$province)->get();
-        
+
         if($commu){
                 $response = [
                   'status'  => '1',

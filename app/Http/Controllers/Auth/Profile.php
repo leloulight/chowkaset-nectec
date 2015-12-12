@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use Illuminate\Http\Request;
 use App\User;
 use Auth;
+use Hash;
 use Carbon;
 use Redirect;
 use DB;
@@ -56,13 +57,42 @@ class Profile extends Controller
         return Redirect::to('/home');
      }
      public function officerPostCreateProfile(Request $request){
+       //สร้าง username password
+       $userid = rand();
+       $usernameRS = substr($userid,0,6);
+       $passwordRS = str_random(6);
+       $password = Hash::make($passwordRS);
+       $userCheck = DB::table('users')->where('member_id','=','FM'.$usernameRS)->get();
+       if($userCheck){
+         $userid = rand();
+         $usernameRS = substr($userid,0,6);
+         $RegisterData = User::create([
+             'member_id' => 'FM'.$usernameRS,
+             'password' => $password,
+             'typemember_id' => '1',
+             'typeuser_id' => $request->input('typeuser_profile'),
+             'name' => $request->input('fname')+' '+$request->input('lname'),
+             'email' => $passwordRS,
+             'picture' => 'assets/img/user.jpg',
+         ]);
+       }else{
+         $RegisterData = User::create([
+             'member_id' => 'FM'.$usernameRS,
+             'password' => $password,
+             'typemember_id' => '1',
+             'typeuser_id' => $request->input('typeuser_profile'),
+             'name' => $request->input('fname').' '.$request->input('lname'),
+             'email' => $passwordRS,
+             'picture' => 'assets/img/user.jpg',
+         ]);
+       }
        if($request->input('optcommu')==0){
          $community_edit = '';
        }else{
          $community_edit = $request->input('farmercomunity');
        }
         $newprofile = new Profiles;
-        $newprofile->user_id = '0';
+        $newprofile->user_id = $RegisterData->id;
         $newprofile->prefix = $request->input('prefix_id');
         $newprofile->fname = $request->input('fname');
         $newprofile->lname = $request->input('lname');
