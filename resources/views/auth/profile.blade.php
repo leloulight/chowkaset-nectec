@@ -66,8 +66,8 @@
 				<div class="panel-body">
 					<div class="form-group">
 						<div class="col-md-4 col-sm-4 col-xs-4">
-							<label class="radio-inline"><input type="radio" name="optcommu" onclick="profile_hide_community()" checked="checked">เป็นสมาชิกศูนย์ข้าว</label>
-							<label class="radio-inline"><input type="radio" name="optcommu" onclick="profile_show_community()">ไม่เป็นสมาชิกศูนย์ข้าว</label>
+							<label class="radio-inline"><input type="radio" name="optcommu" value="0" onclick="profile_hide_community()" checked="checked">ไม่เป็นสมาชิกศูนย์ข้าว</label>
+							<label class="radio-inline"><input type="radio" name="optcommu" value="1" onclick="profile_show_community()">เป็นสมาชิกศูนย์ข้าว</label>
 						</div>
 					</div>
 					<div class="form-group" style="display:none;" id="profile_community">

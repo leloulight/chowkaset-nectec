@@ -25,13 +25,18 @@ class Profile extends Controller
         }
      }
      public function postCreateProfile(Request $request){
+       if($request->input('optcommu')==0){
+         $community_edit = '';
+       }else{
+         $community_edit = $request->input('farmercomunity');
+       }
         $newprofile = new Profiles;
         $newprofile->user_id = Auth::user()->id;
         $newprofile->prefix = $request->input('prefix_id');
         $newprofile->fname = $request->input('fname');
         $newprofile->lname = $request->input('lname');
         $newprofile->card_id = $request->input('card_id');
-        $newprofile->fmcm_id = $request->input('farmercomunity');
+        $newprofile->fmcm_id = $community_edit;
         $newprofile->user_province_code = $request->input('province');
         $newprofile->user_aumphur_code = $request->input('aumphur');
         $newprofile->user_district_code = $request->input('district');
@@ -51,13 +56,18 @@ class Profile extends Controller
         return Redirect::to('/home');
      }
      public function officerPostCreateProfile(Request $request){
+       if($request->input('optcommu')==0){
+         $community_edit = '';
+       }else{
+         $community_edit = $request->input('farmercomunity');
+       }
         $newprofile = new Profiles;
         $newprofile->user_id = '0';
         $newprofile->prefix = $request->input('prefix_id');
         $newprofile->fname = $request->input('fname');
         $newprofile->lname = $request->input('lname');
         $newprofile->card_id = $request->input('card_id');
-        $newprofile->fmcm_id = $request->input('farmercomunity');
+        $newprofile->fmcm_id = $community_edit;
         $newprofile->user_province_code = $request->input('province');
         $newprofile->user_aumphur_code = $request->input('aumphur');
         $newprofile->user_district_code = $request->input('district');
@@ -75,7 +85,7 @@ class Profile extends Controller
         );
         return Redirect::to('/officer');
      }
-     
+
     public function getChangeprofile(){
     	try {
     		$IdUser = Auth::user()->id;
@@ -90,13 +100,18 @@ class Profile extends Controller
     	}
     }
     public function postChangeprofile(Request $request){
+      if($request->input('optcommu')==0){
+        $community_edit = '';
+      }else{
+        $community_edit = $request->input('farmercomunity');
+      }
     	   $profile = DB::table('profiles')->where('pf_id', $request->input('form_id'))
             ->update(['fname' => $request->input('fname'),'lname' => $request->input('lname'),
             'address' => $request->input('address'),'card_id' => $request->input('card_id'),
             'user_province_code' => $request->input('province'),
             'user_aumphur_code' => $request->input('aumphur'),
             'user_district_code' => $request->input('district'),
-            'fmcm_id'=>$request->input('farmercomunity'),
+            'fmcm_id'=>$community_edit,
             'updated_at'=> Carbon\Carbon::now()
             ]);
 
