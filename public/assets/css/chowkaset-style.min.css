@@ -634,14 +634,14 @@ body {
 
 .thumb {
   display: inline-block;
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   border: 0;
   border-radius: 50%;
   margin: 5px;
   border: 0 none;
   box-shadow: none;
-  background-color: white;
+  background-image: url("../img/user.jpg");
   background-position: center center;
   background-size: cover; }
 

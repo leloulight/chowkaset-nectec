@@ -55,7 +55,7 @@ body{
 			color:#5CB85C;
 		}
 	}
-	
+
 }
 .map_search_tab{
 	width: 100%;
@@ -168,7 +168,7 @@ body{
 		color: #16a085;
 	}
 	.content-body-col{
-		color: #F7C068;	
+		color: #F7C068;
 	}
 	.content-head-col{
 		cursor: pointer;
@@ -266,7 +266,7 @@ body{
 			height: 45px;
 			background-color: #16a085;
 			border-top-left-radius: 5px;
-			border-top-right-radius: 5px; 
+			border-top-right-radius: 5px;
 			text-align: center;
 		    padding-top: 8px;
 		    color: white;
@@ -291,7 +291,7 @@ body{
 					a:hover{
 						background-color: #34495e;
 						color: white;
-					}				
+					}
 				}
 				li.active{
 					background-color: #EEEEEF;
@@ -337,7 +337,7 @@ body{
     			border-color: white;
 			}
 			}
-			
+
 		}
 			.place_kaset_content::-webkit-scrollbar {
 		    -webkit-appearance: none;
@@ -430,7 +430,7 @@ body{
 					a:hover{
 						background-color: #34495e;
 						color: white;
-					}				
+					}
 				}
 				li.active{
 					background-color: #EEEEEF;
@@ -755,7 +755,7 @@ body{
 			color: #D9534F;
 		}
 	}
-@media (max-width: 992px) { 
+@media (max-width: 992px) {
 	.farm_management_menu{
 		background-color: white;
 		height: 70px;
@@ -777,7 +777,7 @@ body{
 						display: none;
 					}
 				}
-				
+
 			}
 		}
 	}
@@ -791,9 +791,9 @@ body{
 		margin-left: 98%;
 		a{
 			display: none;
-			
+
 		}
-		
+
 	}
 }
 }
@@ -836,14 +836,15 @@ body{
 }
 .thumb {
     display: inline-block;
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     border:0;
     border-radius: 50%;
     margin: 5px;
     border: 0 none;
     box-shadow: none;
-    background-color: white;
+		background-image: url('../img/user.jpg');
+    //background-color: white;
     background-position: center center;
     background-size: cover;
 }
@@ -873,7 +874,7 @@ body{
 					border-radius: 0px;
 					color: #3b3b3b;
 				}
-				
+
 			}
 			li.active{
 				a{
@@ -882,13 +883,13 @@ body{
 					border-top: 5px solid #e64b21 !important;
 				}
 			}
-		}	
+		}
 	}
 	.box-right{
 		float: right;
 		height: 50px!important;
 	}
-	
+
 }
 #chatkaset_content{
 	height: 100%;
@@ -935,7 +936,7 @@ body{
 					border-radius: 0px;
 					color: #3b3b3b;
 				}
-				
+
 			}
 			li.active{
 				a{
@@ -944,13 +945,13 @@ body{
 					border-top: 5px solid #e64b21 !important;
 				}
 			}
-		}	
+		}
 	}
 	.box-right{
 		float: right;
 		height: 50px!important;
 	}
-	
+
 }
 #officer_content{
     padding-top: 65px;
