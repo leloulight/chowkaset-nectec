@@ -26,8 +26,8 @@
 				  <thead>
 				  	<tr>
 				  		<th width="5%">ลำดับ</th>
-				  		<th width="25%">ชื่อ</th>
-							<th width="10%">ตำแหน่ง</th>
+				  		<th width="20%">ชื่อ</th>
+							<th width="13%">ตำแหน่ง</th>
 				  		<th width="10%">เบอร์โทรศัพท์</th>
 				  		<th width="20%">อีเมล์</th>
 				  		<th width="25%">สังกัด</th>
@@ -135,6 +135,101 @@
 				</div>
 				</form>
 		  	</div>
+
+				<div class="col-md-12 officer-main-content" style="display:none;" id="div_farmer_show_area">
+		  	<button id="officer_add_cancle_top_farmer" type="button" class="btn btn-danger btn-add officer_showarea_cancle_farmer">ยกเลิกการเพิ่มรายชื่อ</button>
+		  	<form class="form-horizontal" role="form" method="post" action="{{ url('/auth/officer/addProfile/commit')}}">
+				<div class="panel-heading"><h2 class="head-col">เพิ่มข้อมูลเกษตรกร</h2><hr></div>
+				<div class="panel-body">
+					<input type="hidden" name="_token" value="{{ csrf_token() }}">
+						<div class="form-group">
+					      <div class="col-md-2">
+					        <select data-placeholder="คำนำหน้าชื่อ" class="form-control" name="prefix_id">
+				            <option value="1">นาย</option>
+				            <option value="2">นาง</option>
+				            <option value="3">นางสาว</option>
+				    		</select>
+					      </div>
+					      <div class="col-md-3">
+					        <input type="text" class="form-control" id="text" placeholder="ชื่อ" data-validation="required" value="" name="fname">
+					      </div>
+					      <div class="col-md-3">
+					        <input type="text" class="form-control" id="text" placeholder="นามสกุล" data-validation="required" value="" name="lname">
+					      </div>
+					      <div class="col-md-4">
+					        <input type="text" class="form-control" id="text" placeholder="รหัสบัตรประชาชน" data-validation="number length" data-validation-length="13" data-validation-help="เช่น 1234567890123" value="" name="card_id">
+					      </div>
+					    </div>
+					    <div class="form-group">
+					      <div class="col-md-6">
+					        <input type="text" class="form-control" id="text" placeholder="ที่อยู่" value="" name="address">
+					      </div>
+					      <div class="col-md-2">
+					        <select data-placeholder="เลือกจังหวัด" class="form-control" id="add_province_area" name="province">
+				            <option value="49">กำแพงเพชร</option>
+				            <option value="1">กรุงเทพ</option>
+				    		</select>
+					      </div>
+					      <div class="col-md-2">
+					        <select data-placeholder="เลือกอำเภอ" class="form-control" id="add_aumphur_area" name="aumphur">
+					        <option value="0">เลือกอำเภอ</option>
+				    		</select>
+					      </div>
+					      <div class="col-md-2">
+					        <select data-placeholder="เลือกตำบล" class="form-control" tabindex="3" id="add_district_area" name="district">
+				            <option value="0">เลือกตำบล</option>
+				    		</select>
+					      </div>
+					    </div>
+							<div class="form-group">
+					      <div class="col-md-6">
+									<select data-placeholder="เลือกประเภทเกษตรกร" class="form-control" name="typeuser_profile">
+							        <option value="3">เกษตรกร</option>
+											<option value="4">เกษตรกรปราดเปรื่อง</option>
+						    		</select>
+					      </div>
+					    </div>
+				</div>
+				<div class="panel-heading"><h2 class="head-col">ข้อมูลสังกัด</h2><hr></div>
+				<div class="panel-body">
+					<div class="form-group">
+						<div class="col-md-4 col-sm-4 col-xs-4">
+							<div class="community_offiecer">
+								<label class="radio-inline"><input type="radio" name="optcommu" value="0" onclick="officer_hide_community()" checked="checked">ไม่เป็นสมาชิกศูนย์ข้าว</label>
+								<label class="radio-inline"><input type="radio" name="optcommu" value="1" onclick="officer_show_community()">เป็นสมาชิกศูนย์ข้าว</label>
+							</div>
+						</div>
+					</div>
+					<div class="form-group" style="display:none;" id="officer_community">
+					    <div class="col-md-4 col-sm-4 col-xs-4">
+							<select data-placeholder="เลือกศูนย์ข้าว" class="form-control" id="add_farmer_farmercomunity_area" name="farmercomunity">
+					        <option value="1">เลือกศูนย์ข้าว</option>
+				    		</select>
+					    </div>
+					</div>
+				</div>
+				<div class="panel-heading"><h2 class="head-col">ข้อมูลติดต่อ</h2><hr></div>
+				<div class="panel-body">
+					<div class="form-group">
+					    <div class="col-md-4 col-sm-4 col-xs-4">
+					        <input type="text" class="form-control" id="phone" name="phone" placeholder="เบอร์โทรศัพท์" data-validation="number length" data-validation-length="10" data-validation-help="เช่น 08123456789" value="">
+					    </div>
+					     <div class="col-md-4 col-sm-4 col-xs-4">
+					        <input type="email" class="form-control" id="email" placeholder="อีเมล์" data-validation="email" data-validation-help="เช่น chowkaset@nectec.com" value="" name="email">
+					    </div>
+					    <div class="col-md-4 col-sm-4 col-xs-4">
+					        <input type="text" class="form-control" id="email" placeholder="เฟสบุ้ก" data-validation-help="เช่น https://www.facebook.com/nectec" value="" name="facebook">
+					    </div>
+					</div>
+					<div class="form-grop">
+						<div class="col-md-4 col-md-offset-5">
+							<button type="submit" class="btn btn-success">ตกลง</button>
+							<button type="button" class="btn btn-danger officer_showarea_cancle_farmer">ยกเลิก</button>
+						</div>
+					</div>
+				</div>
+				</form>
+		  	</div>
 </div>
 <script>
 function officer_hide_community(){
@@ -142,6 +237,11 @@ function officer_hide_community(){
 }
 function officer_show_community(){
 	$("#officer_community").show();
+}
+function officer_farmer_show_area(id){
+	$("#farmer_add_area").hide();
+	$("#farmer_detail_area").hide();
+	$("#div_farmer_show_area").show();
 }
 $(document).ready(function(){
 	//ค่าเริ่มต้น
@@ -171,7 +271,7 @@ $(document).ready(function(){
 				   	opt+= '<td>'+phone+'</td>';
 				   	opt+= '<td>'+farmers.email[i]+'</td>';
 				   	opt+= '<td>'+value.fmcm_name+'</td>';
-				   	opt+= '<td><a onclick="" title="เพิ่มเติม"><i class="fa fa-search-plus zoom_acc"></i></a></td>';
+				   	opt+= '<td><a onclick="officer_farmer_show_area(1)" title="เพิ่มเติม"><i class="fa fa-search-plus zoom_acc"></i></a></td>';
 			   	  	opt += '</tr>';
 			   	  	count ++;
 			   	  	i++;
@@ -207,7 +307,7 @@ $(document).ready(function(){
 			   	  	opt += '<tr>';
 			   	  	opt += '<td>'+count+'</td>';
 			   	  	opt += '<td style="text-align: left;padding-left: 15px;">'+value.prefix_name+' '+value.fname+' '+value.lname+'</td>';
-
+							opt += '<td>'+value.tu_name+'</td>';
 						var phone = farmers.phone[i][0]+farmers.phone[i][1]+farmers.phone[i][2]+"-"+farmers.phone[i][3]+farmers.phone[i][4]+farmers.phone[i][5]+farmers.phone[i][6]+farmers.phone[i][7]+farmers.phone[i][8]+farmers.phone[i][9];
 				   	opt+= '<td>'+phone+'</td>';
 				   	opt+= '<td>'+farmers.email[i]+'</td>';
@@ -250,7 +350,8 @@ $(document).ready(function(){
 			   	  	opt += '<tr>';
 			   	  	opt += '<td>'+count+'</td>';
 			   	  	opt += '<td style="text-align: left;padding-left: 15px;">'+value.prefix_name+' '+value.fname+' '+value.lname+'</td>';
-				   	var phone = farmers.phone[i][0]+farmers.phone[i][1]+farmers.phone[i][2]+"-"+farmers.phone[i][3]+farmers.phone[i][4]+farmers.phone[i][5]+farmers.phone[i][6]+farmers.phone[i][7]+farmers.phone[i][8]+farmers.phone[i][9];
+							opt += '<td>'+value.tu_name+'</td>';
+						var phone = farmers.phone[i][0]+farmers.phone[i][1]+farmers.phone[i][2]+"-"+farmers.phone[i][3]+farmers.phone[i][4]+farmers.phone[i][5]+farmers.phone[i][6]+farmers.phone[i][7]+farmers.phone[i][8]+farmers.phone[i][9];
 				   	opt+= '<td>'+phone+'</td>';
 				   	opt+= '<td>'+farmers.email[i]+'</td>';
 				   	opt+= '<td>'+value.fmcm_name+'</td>';
@@ -281,7 +382,8 @@ $(document).ready(function(){
 			   	  	opt += '<tr>';
 			   	  	opt += '<td>'+count+'</td>';
 			   	  	opt += '<td style="text-align: left;padding-left: 15px;">'+value.prefix_name+' '+value.fname+' '+value.lname+'</td>';
-				   	var phone = farmers.phone[i][0]+farmers.phone[i][1]+farmers.phone[i][2]+"-"+farmers.phone[i][3]+farmers.phone[i][4]+farmers.phone[i][5]+farmers.phone[i][6]+farmers.phone[i][7]+farmers.phone[i][8]+farmers.phone[i][9];
+							opt += '<td>'+value.tu_name+'</td>';
+						var phone = farmers.phone[i][0]+farmers.phone[i][1]+farmers.phone[i][2]+"-"+farmers.phone[i][3]+farmers.phone[i][4]+farmers.phone[i][5]+farmers.phone[i][6]+farmers.phone[i][7]+farmers.phone[i][8]+farmers.phone[i][9];
 				   	opt+= '<td>'+phone+'</td>';
 				   	opt+= '<td>'+farmers.email[i]+'</td>';
 				   	opt+= '<td>'+value.fmcm_name+'</td>';
@@ -310,6 +412,11 @@ $(document).ready(function(){
 	$("#officer_add_cancle_top_farmer").click(function(){
 		$("#farmer_add_area").hide();
 		$("#farmer_detail_area").show();
+	});
+	$(".officer_showarea_cancle_farmer").click(function(){
+		$("#farmer_add_area").hide();
+		$("#farmer_detail_area").show();
+		$("#div_farmer_show_area").hide();
 	});
 });
 
