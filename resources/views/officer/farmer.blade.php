@@ -194,6 +194,64 @@
 				</div>
 				</form>
 		  	</div>
+				<div class="col-md-12 officer-main-content" style="display:none;" id="div_farmer_edit_area">
+		  	<button id="officer_add_cancle_top_farmer" type="button" class="btn btn-danger btn-add officer_showarea_cancle_farmer">ยกเลิกดูข้อมูลเกษตรกร</button>
+		  	<form class="form-horizontal" role="form" method="post" action="{{ url('/auth/officer/addProfile/commit')}}">
+				<div class="panel-heading"><h2 class="head-col">ข้อมูลเกษตรกร</h2><hr></div>
+				<div class="panel-body">
+					<input type="hidden" name="_token" value="{{ csrf_token() }}">
+						<div class="form-group">
+					      <div class="col-md-4">
+					        <label class="head_show">ชื่อ-นามสกุล : </label><p id="farmer_editarea_name"></p>
+					      </div>
+					      <div class="col-md-3">
+									<label class="head_show">รหัสบัตรประชนชน : </label><p id="farmer_editarea_cardid"></p>
+					      </div>
+								<div class="col-md-3">
+									<label class="head_show">ชื่อผู้ใช้ : </label><p id="farmer_editarea_urname"></p>
+					      </div>
+								<div class="col-md-2">
+									<label class="head_show">รหัสผ่าน : </label><p id="farmer_editarea_password"></p>
+					      </div>
+					    </div>
+					    <div class="form-group">
+					      <div class="col-md-6">
+										<label class="head_show">ที่อยู่ : </label><p  id="farmer_editarea_address"></p>
+					      </div>
+					    </div>
+							<div class="form-group">
+					      <div class="col-md-6">
+									<label class="head_show">ตำแหน่ง : </label><p  id="farmer_editarea_typeuser"></p>
+					      </div>
+					    </div>
+				</div>
+				<div class="panel-heading"><h2 class="head-col">ข้อมูลสมาชิก</h2><hr></div>
+				<div class="panel-body">
+					    <div class="col-md-4 col-sm-4 col-xs-4">
+								<label class="head_show">สมาชิก : </label><p  id="farmer_editarea_community"></p>
+					    </div>
+				</div>
+				<div class="panel-heading"><h2 class="head-col">ข้อมูลติดต่อ</h2><hr></div>
+				<div class="panel-body">
+					<div class="form-group">
+					    <div class="col-md-4 col-sm-4 col-xs-4">
+								<label class="head_show">เบอร์โทรศัพท์ : </label><p id="farmer_editarea_tel"></p>
+					    </div>
+					     <div class="col-md-4 col-sm-4 col-xs-4">
+					      <label class="head_show">อีเมล์ : </label><p id="farmer_editarea_email"></p>
+					    </div>
+					    <div class="col-md-4 col-sm-4 col-xs-4">
+					      <label class="head_show">เฟสบุ๊ค : </label><p id="farmer_editarea_facebook"></p>
+					    </div>
+					</div>
+					<div class="form-grop">
+						<div class="col-md-4 col-md-offset-5">
+							<button type="button" class="btn btn-danger officer_showarea_cancle_farmer">ยกเลิกดูข้อมูลเกษตรกร</button>
+						</div>
+					</div>
+				</div>
+				</form>
+		  	</div>
 </div>
 <script>
 function officer_hide_community(){
@@ -223,8 +281,27 @@ function officer_farmer_show_area(id){
 	$("#farmer_detail_area").hide();
 	$("#div_farmer_show_area").show();
 }
-function officer_p_show(){
-
+function officer_farmer_edit_area(id){
+	$.ajax({
+		  url: site_url+"/auth/getUserProfile/"+id
+		}).then(function(profiledata) {
+		   	  $.each(profiledata.data, function(index, value) {
+						$("#farmer_editarea_name").html(value.prefix_name+' '+value.fname+' '+value.lname);
+						$("#farmer_editarea_cardid").html(value.card_id);
+						$("#farmer_editarea_urname").html(value.member_id);
+						$("#farmer_editarea_password").html('<button type="button" class="btn btn-default" onclick="farmer_password_edit('+value.id+')">เปลี่ยนรหัสผ่าน</button>');
+						$("#farmer_editarea_address").html(value.address);
+						$("#farmer_editarea_typeuser").html(value.tu_name);
+						$("#farmer_editarea_community").html(value.fmcm_name);
+						$("#farmer_editarea_facebook").html(value.fmcm_name);
+					});
+					$("#farmer_editarea_tel").html(profiledata.phone[0].ct_detail);
+					$("#farmer_editarea_email").html(profiledata.email[0].ct_detail);
+		});
+	$("#farmer_add_area").hide();
+	$("#farmer_detail_area").hide();
+	$("#div_farmer_show_area").hide();
+	$("#div_farmer_edit_area").show();
 }
 $(document).ready(function(){
 	//ค่าเริ่มต้น
@@ -255,7 +332,7 @@ $(document).ready(function(){
 				   	opt+= '<td>'+farmers.email[i]+'</td>';
 				   	opt+= '<td>'+value.fmcm_name+'</td>';
 				   	opt+= '<td><a onclick="officer_farmer_show_area('+value.id+')" title="เพิ่มเติม"><i class="fa fa-search-plus zoom_acc"></i></a>';
-						opt+= '<a onclick="officer_farmer_edit_area('+value.id+')" title="แก้ไข"><i class="fa fa-search-plus zoom_acc"></i></a></td>';
+						opt+= '<a onclick="officer_farmer_edit_area('+value.id+')" title="แก้ไข"><i class="fa fa-pencil-square edit_acc"></i></a><a onclick="" title="ลบ"><i class="fa fa-trash delete_acc"></i></a></td>';
 							opt += '</tr>';
 			   	  	count ++;
 			   	  	i++;
@@ -401,6 +478,7 @@ $(document).ready(function(){
 		$("#farmer_add_area").hide();
 		$("#farmer_detail_area").show();
 		$("#div_farmer_show_area").hide();
+		$("#div_farmer_edit_area").hide();
 	});
 });
 
