@@ -21,6 +21,7 @@ Route::post('/officer/addPlan/commit','apiv1_0\PlaceApiController@new_plan_crop'
 Route::get('auth/facebook', 'Auth\AuthController@redirectToProvider');
 Route::get('auth/facebook/callback', 'Auth\AuthController@handleProviderCallback');
 Route::get('auth/logout', 'Auth\AuthController@getLogout');
+Route::get('auth/getUserProfile/{user_id}','Auth\Profile@ProfileUser');
 Route::get('auth/profile','Auth\Profile@getCreateProfile');
 Route::post('auth/profile/commit','Auth\Profile@postCreateProfile');
 Route::get('auth/changeprofile','Auth\Profile@getChangeprofile');
@@ -49,7 +50,7 @@ Route::group(array('prefix' => '/api/v1.0'), function()
         Route::get('aumphur/{province_id}','apiv1_0\PlaceApiController@aumphur');
         Route::get('district/{aumphur}','apiv1_0\PlaceApiController@district');
         Route::get('farmercomunity','apiv1_0\PlaceApiController@farmercomunity');
-        
+
     //Officer
         //เกษตรกร
         Route::get('kaset_in_province/{province}','apiv1_0\PlaceApiController@kaset_in_province');

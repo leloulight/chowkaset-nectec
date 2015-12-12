@@ -95,7 +95,7 @@
 					      </div>
 					    </div>
 				</div>
-				<div class="panel-heading"><h2 class="head-col">ข้อมูลสังกัด</h2><hr></div>
+				<div class="panel-heading"><h2 class="head-col">ข้อมูลสมาชิก</h2><hr></div>
 				<div class="panel-body">
 					<div class="form-group">
 						<div class="col-md-4 col-sm-4 col-xs-4">
@@ -135,96 +135,60 @@
 				</div>
 				</form>
 		  	</div>
-
+<!-- ////////////////////////////// -->
 				<div class="col-md-12 officer-main-content" style="display:none;" id="div_farmer_show_area">
-		  	<button id="officer_add_cancle_top_farmer" type="button" class="btn btn-danger btn-add officer_showarea_cancle_farmer">ยกเลิกการเพิ่มรายชื่อ</button>
+		  	<button id="officer_add_cancle_top_farmer" type="button" class="btn btn-danger btn-add officer_showarea_cancle_farmer">ยกเลิกดูข้อมูลเกษตรกร</button>
 		  	<form class="form-horizontal" role="form" method="post" action="{{ url('/auth/officer/addProfile/commit')}}">
-				<div class="panel-heading"><h2 class="head-col">เพิ่มข้อมูลเกษตรกร</h2><hr></div>
+				<div class="panel-heading"><h2 class="head-col">ข้อมูลเกษตรกร</h2><hr></div>
 				<div class="panel-body">
 					<input type="hidden" name="_token" value="{{ csrf_token() }}">
 						<div class="form-group">
-					      <div class="col-md-2">
-					        <select data-placeholder="คำนำหน้าชื่อ" class="form-control" name="prefix_id">
-				            <option value="1">นาย</option>
-				            <option value="2">นาง</option>
-				            <option value="3">นางสาว</option>
-				    		</select>
-					      </div>
-					      <div class="col-md-3">
-					        <input type="text" class="form-control" id="text" placeholder="ชื่อ" data-validation="required" value="" name="fname">
-					      </div>
-					      <div class="col-md-3">
-					        <input type="text" class="form-control" id="text" placeholder="นามสกุล" data-validation="required" value="" name="lname">
-					      </div>
 					      <div class="col-md-4">
-					        <input type="text" class="form-control" id="text" placeholder="รหัสบัตรประชาชน" data-validation="number length" data-validation-length="13" data-validation-help="เช่น 1234567890123" value="" name="card_id">
+					        <label class="head_show">ชื่อ-นามสกุล : </label><p id="farmer_showarea_name"></p>
+					      </div>
+					      <div class="col-md-3">
+									<label class="head_show">รหัสบัตรประชนชน : </label><p id="farmer_showarea_cardid"></p>
+					      </div>
+								<div class="col-md-3">
+									<label class="head_show">ชื่อผู้ใช้ : </label><p id="farmer_showarea_urname"></p>
+					      </div>
+								<div class="col-md-2">
+									<label class="head_show">รหัสผ่าน : </label><p id="farmer_showarea_password"></p>
 					      </div>
 					    </div>
 					    <div class="form-group">
 					      <div class="col-md-6">
-					        <input type="text" class="form-control" id="text" placeholder="ที่อยู่" value="" name="address">
-					      </div>
-					      <div class="col-md-2">
-					        <select data-placeholder="เลือกจังหวัด" class="form-control" id="add_province_area" name="province">
-				            <option value="49">กำแพงเพชร</option>
-				            <option value="1">กรุงเทพ</option>
-				    		</select>
-					      </div>
-					      <div class="col-md-2">
-					        <select data-placeholder="เลือกอำเภอ" class="form-control" id="add_aumphur_area" name="aumphur">
-					        <option value="0">เลือกอำเภอ</option>
-				    		</select>
-					      </div>
-					      <div class="col-md-2">
-					        <select data-placeholder="เลือกตำบล" class="form-control" tabindex="3" id="add_district_area" name="district">
-				            <option value="0">เลือกตำบล</option>
-				    		</select>
+										<label class="head_show">ที่อยู่ : </label><p  id="farmer_showarea_address"></p>
 					      </div>
 					    </div>
 							<div class="form-group">
 					      <div class="col-md-6">
-									<select data-placeholder="เลือกประเภทเกษตรกร" class="form-control" name="typeuser_profile">
-							        <option value="3">เกษตรกร</option>
-											<option value="4">เกษตรกรปราดเปรื่อง</option>
-						    		</select>
+									<label class="head_show">ตำแหน่ง : </label><p  id="farmer_showarea_typeuser"></p>
 					      </div>
 					    </div>
 				</div>
-				<div class="panel-heading"><h2 class="head-col">ข้อมูลสังกัด</h2><hr></div>
+				<div class="panel-heading"><h2 class="head-col">ข้อมูลสมาชิก</h2><hr></div>
 				<div class="panel-body">
-					<div class="form-group">
-						<div class="col-md-4 col-sm-4 col-xs-4">
-							<div class="community_offiecer">
-								<label class="radio-inline"><input type="radio" name="optcommu" value="0" onclick="officer_hide_community()" checked="checked">ไม่เป็นสมาชิกศูนย์ข้าว</label>
-								<label class="radio-inline"><input type="radio" name="optcommu" value="1" onclick="officer_show_community()">เป็นสมาชิกศูนย์ข้าว</label>
-							</div>
-						</div>
-					</div>
-					<div class="form-group" style="display:none;" id="officer_community">
 					    <div class="col-md-4 col-sm-4 col-xs-4">
-							<select data-placeholder="เลือกศูนย์ข้าว" class="form-control" id="add_farmer_farmercomunity_area" name="farmercomunity">
-					        <option value="1">เลือกศูนย์ข้าว</option>
-				    		</select>
+								<label class="head_show">สมาชิก : </label><p  id="farmer_showarea_community"></p>
 					    </div>
-					</div>
 				</div>
 				<div class="panel-heading"><h2 class="head-col">ข้อมูลติดต่อ</h2><hr></div>
 				<div class="panel-body">
 					<div class="form-group">
 					    <div class="col-md-4 col-sm-4 col-xs-4">
-					        <input type="text" class="form-control" id="phone" name="phone" placeholder="เบอร์โทรศัพท์" data-validation="number length" data-validation-length="10" data-validation-help="เช่น 08123456789" value="">
+								<label class="head_show">เบอร์โทรศัพท์ : </label><p id="farmer_showarea_tel"></p>
 					    </div>
 					     <div class="col-md-4 col-sm-4 col-xs-4">
-					        <input type="email" class="form-control" id="email" placeholder="อีเมล์" data-validation="email" data-validation-help="เช่น chowkaset@nectec.com" value="" name="email">
+					      <label class="head_show">อีเมล์ : </label><p id="farmer_showarea_email"></p>
 					    </div>
 					    <div class="col-md-4 col-sm-4 col-xs-4">
-					        <input type="text" class="form-control" id="email" placeholder="เฟสบุ้ก" data-validation-help="เช่น https://www.facebook.com/nectec" value="" name="facebook">
+					      <label class="head_show">เฟสบุ๊ค : </label><p id="farmer_showarea_facebook"></p>
 					    </div>
 					</div>
 					<div class="form-grop">
 						<div class="col-md-4 col-md-offset-5">
-							<button type="submit" class="btn btn-success">ตกลง</button>
-							<button type="button" class="btn btn-danger officer_showarea_cancle_farmer">ยกเลิก</button>
+							<button type="button" class="btn btn-danger officer_showarea_cancle_farmer">ยกเลิกดูข้อมูลเกษตรกร</button>
 						</div>
 					</div>
 				</div>
@@ -239,9 +203,28 @@ function officer_show_community(){
 	$("#officer_community").show();
 }
 function officer_farmer_show_area(id){
+	$.ajax({
+		  url: site_url+"/auth/getUserProfile/"+id
+		}).then(function(profiledata) {
+		   	  $.each(profiledata.data, function(index, value) {
+						$("#farmer_showarea_name").html(value.prefix_name+' '+value.fname+' '+value.lname);
+						$("#farmer_showarea_cardid").html(value.card_id);
+						$("#farmer_showarea_urname").html(value.member_id);
+						$("#farmer_showarea_password").html('<button type="button" class="btn btn-default" onclick="farmer_password_show('+value.id+')">แสดง</button>');
+						$("#farmer_showarea_address").html(value.address);
+						$("#farmer_showarea_typeuser").html(value.tu_name);
+						$("#farmer_showarea_community").html(value.fmcm_name);
+						$("#farmer_showarea_facebook").html(value.fmcm_name);
+					});
+					$("#farmer_showarea_tel").html(profiledata.phone[0].ct_detail);
+					$("#farmer_showarea_email").html(profiledata.email[0].ct_detail);
+		});
 	$("#farmer_add_area").hide();
 	$("#farmer_detail_area").hide();
 	$("#div_farmer_show_area").show();
+}
+function officer_p_show(){
+
 }
 $(document).ready(function(){
 	//ค่าเริ่มต้น
@@ -271,8 +254,9 @@ $(document).ready(function(){
 				   	opt+= '<td>'+phone+'</td>';
 				   	opt+= '<td>'+farmers.email[i]+'</td>';
 				   	opt+= '<td>'+value.fmcm_name+'</td>';
-				   	opt+= '<td><a onclick="officer_farmer_show_area(1)" title="เพิ่มเติม"><i class="fa fa-search-plus zoom_acc"></i></a></td>';
-			   	  	opt += '</tr>';
+				   	opt+= '<td><a onclick="officer_farmer_show_area('+value.id+')" title="เพิ่มเติม"><i class="fa fa-search-plus zoom_acc"></i></a>';
+						opt+= '<a onclick="officer_farmer_edit_area('+value.id+')" title="แก้ไข"><i class="fa fa-search-plus zoom_acc"></i></a></td>';
+							opt += '</tr>';
 			   	  	count ++;
 			   	  	i++;
 			   	  });
@@ -312,7 +296,7 @@ $(document).ready(function(){
 				   	opt+= '<td>'+phone+'</td>';
 				   	opt+= '<td>'+farmers.email[i]+'</td>';
 				   	opt+= '<td>'+value.fmcm_name+'</td>';
-				   	opt+= '<td><a onclick="" title="เพิ่มเติม"><i class="fa fa-search-plus zoom_acc"></i></a></td>';
+				   	opt+= '<td><a onclick="officer_farmer_show_area('+value.id+')" title="เพิ่มเติม"><i class="fa fa-search-plus zoom_acc"></i></a></td>';
 			   	  	opt += '</tr>';
 			   	  	count ++;
 			   	  	i++;
@@ -355,7 +339,7 @@ $(document).ready(function(){
 				   	opt+= '<td>'+phone+'</td>';
 				   	opt+= '<td>'+farmers.email[i]+'</td>';
 				   	opt+= '<td>'+value.fmcm_name+'</td>';
-				   	opt+= '<td><a onclick="" title="เพิ่มเติม"><i class="fa fa-search-plus zoom_acc"></i></a></td>';
+				   	opt+= '<td><a onclick="officer_farmer_show_area('+value.id+')" title="เพิ่มเติม"><i class="fa fa-search-plus zoom_acc"></i></a></td>';
 			   	  	opt += '</tr>';
 			   	  	count ++;
 			   	  	i++;
@@ -387,7 +371,7 @@ $(document).ready(function(){
 				   	opt+= '<td>'+phone+'</td>';
 				   	opt+= '<td>'+farmers.email[i]+'</td>';
 				   	opt+= '<td>'+value.fmcm_name+'</td>';
-				   	opt+= '<td><a onclick="" title="เพิ่มเติม"><i class="fa fa-search-plus zoom_acc"></i></a></td>';
+				   	opt+= '<td><a onclick="officer_farmer_show_area('+value.id+')" title="เพิ่มเติม"><i class="fa fa-search-plus zoom_acc"></i></a></td>';
 			   	  	opt += '</tr>';
 			   	  	count ++;
 			   	  	i++;

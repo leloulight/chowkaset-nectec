@@ -12,10 +12,41 @@ use DB;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Profiles;
+use Response;
 
 class Profile extends Controller
 {
-
+     public function ProfileUser($userid){
+       $statusCode = 200;
+       $userProfile = DB::table('users')
+       ->join('profiles','profiles.user_id','=','users.id')
+       ->join('prefixs','prefixs.prefix_id','=','profiles.prefix')
+       ->join('typeusers','users.typeuser_id','=','typeusers.tu_id')
+       ->join('province','profiles.user_province_code','=','province.PROVINCE_ID')
+       ->join('amphur','profiles.user_aumphur_code','=','amphur.AMPHUR_ID')
+       ->join('district','profiles.user_district_code','=','district.DISTRICT_ID')
+       ->join('farmercommunities','farmercommunities.fmcm_id','=','profiles.fmcm_id')
+       ->select('prefixs.prefix_name', 'users.id', 'profiles.fname', 'profiles.lname',
+        'profiles.address', 'typeusers.tu_name','profiles.card_id','users.member_id'
+        ,'farmercommunities.fmcm_name','profiles.pf_id')
+       ->where('users.id','=',$userid)->get();
+       $phone = DB::table('contacts')->where('tyct_type','=','1')->where('pf_id','=',$userProfile[0]->pf_id)->get();
+       $email = DB::table('contacts')->where('tyct_type','=','2')->where('pf_id','=',$userProfile[0]->pf_id)->get();
+       if($userProfile){
+               $response = [
+                 'status'  => '1',
+                 'data' => $userProfile,
+                 'phone'=> $phone,
+                 'email'=> $email
+               ];
+           }else{
+               $response = [
+                 'status'  => '0',
+                 'message' => 'No Data!'
+               ];
+           }
+       return Response::json($response, $statusCode);
+     }
      public function getCreateProfile(){
         $user_id = Auth::user()->id;
         $profile = Profiles::where('user_id','=',$user_id)->first();

@@ -222,5 +222,8 @@ class AuthController extends Controller
         Auth::login($UserDataLogin, true);
     }
 
+    public function show_password_user($userId,$officerId){
+        //$pw = DB::table('users')->select('users.password')
+    }
 
 }

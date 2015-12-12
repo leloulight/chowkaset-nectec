@@ -94,7 +94,7 @@
 				  	</tr>
 				  </thead>
 				  <tbody id="add_plans_seeds_show_area">
-					
+
 				  </tbody>
 				</table>
 				<button style="margin-left: 5px;" onclick="remove_row_plan()" type="button" class="btn btn-warning btn-add">ลบ</button>
@@ -112,7 +112,7 @@
 				  	</tr>
 				  </thead>
 				  <tbody id="duration_plans_seeds_show_area">
-					
+
 				  </tbody>
 				</table>
 				<button style="margin-left: 5px;"onclick="remove_duration_plan()" type="button" class="btn btn-warning btn-add">ลบ</button>
@@ -134,35 +134,35 @@
 					<input type="hidden" name="_token" value="{{ csrf_token() }}">
 						<div class="form-group">
 						  	<div class="col-md-6">
-							  	<label for="seed">พืช :</label>
+							  	<label for="seed" class="head_show">พืช :</label>
 							  	<p id="plan_show_seed"></p>
 					        </div>
 					        <div class="col-md-6">
-								<label for="seed">สายพันธู์ :</label>
+								<label for="seed" class="head_show">สายพันธู์ :</label>
 							  	<p id="plan_show_breed"></p>
 					        </div>
 						</div>
 						<div class="form-group">
 					      <div class="col-md-12">
-					        <label for="seed">ชื่อแผนเพาะปลูก :</label>
+					        <label for="seed" class="head_show">ชื่อแผนเพาะปลูก :</label>
 							  	<p id="plan_show_name_plan"></p>
 					      </div>
 					    </div>
 					    <div class="form-group">
 					      <div class="col-md-12">
-					       <label for="seed">ชื่อเจ้าของแผนเพาะปลูก :</label>
+					       <label for="seed" class="head_show">ชื่อเจ้าของแผนเพาะปลูก :</label>
 							  	<p id="plan_show_name_owner"></p>
 					      </div>
 					    </div>
 					    <div class="form-group">
 					      <div class="col-md-12">
-					        <label for="seed">ระยะเวลาปลูก :</label>
+					        <label for="seed" class="head_show">ระยะเวลาปลูก :</label>
 							  	<p id="plan_show_duration"></p>
 					      </div>
 					    </div>
 					    <div class="form-group">
 					      <div class="col-md-12">
-					        <label for="seed">คำอธิบาย :</label>
+					        <label for="seed" class="head_show">คำอธิบาย :</label>
 							  	<p id="plan_show_detail"></p>
 					      </div>
 					    </div>
@@ -185,7 +185,7 @@
 				  	</tr>
 				  </thead>
 				  <tbody id="show_plans_seeds_show_area">
-					
+
 				  </tbody>
 				</table>
 				</div>
@@ -200,7 +200,7 @@
 				  	</tr>
 				  </thead>
 				  <tbody id="show_duration_plans_seeds_show_area">
-					
+
 				  </tbody>
 				</table>
 		  	</div>
@@ -212,7 +212,7 @@
 							<button type="button" class="btn btn-success" id="officer_show_cancle_plans">เสร็จสิ้นการดู</button>
 						</div>
 			</div>-->
-		  </div>	
+		  </div>
 		 </div>
 <!-- //////////////////////////////////////////////////////////////////////// -->
 </div>
@@ -253,7 +253,7 @@ $(document).ready(function(){
 								});
 							}
 							$("#plans_seeds_show_area").html(opt);
-						});	
+						});
 			});
 	$.ajax({
 			  url: site_url+"/api/v1.0/Crop/getBreedOfSeed/"+$("#plans_add_seeds_area").val()
@@ -268,7 +268,7 @@ $(document).ready(function(){
 					}
 					$("#breed_add_plan").html(opt);
 			});
-	//------------------------------- init ------------------------------//	
+	//------------------------------- init ------------------------------//
 	$("#plans_seeds_area").change(function(){
 			$.ajax({
 			  url: site_url+"/api/v1.0/Crop/getBreedOfSeed/"+$("#plans_seeds_area").val()
@@ -282,7 +282,7 @@ $(document).ready(function(){
 					   	  });
 					}
 					$("#plans_breeds_area").html(opt);
-			});	
+			});
 	});
 	$("#plans_seeds_area").change(function(){
 			$.ajax({
@@ -307,7 +307,7 @@ $(document).ready(function(){
 					});
 				}
 				$("#plans_seeds_show_area").html(opt);
-			});	
+			});
 	});
 	$("#plans_breeds_area").change(function(){
 			$.ajax({
@@ -332,7 +332,7 @@ $(document).ready(function(){
 					});
 				}
 				$("#plans_seeds_show_area").html(opt);
-			});	
+			});
 	});
 	$("#plans_add_seeds_area").change(function(){
 			$.ajax({
