@@ -125,10 +125,6 @@
 					    <div class="col-md-4 col-sm-4 col-xs-4">
 					        <input type="text" class="form-control" id="email" placeholder="เฟสบุ้ก" data-validation-help="เช่น https://www.facebook.com/nectec" value="" name="facebook">
 					    </div>
-					    <!--<div class="col-md-4 col-sm-4 col-xs-4">
-					     	<button type="button" class="btn btn-success">เพิ่ม</button>
-					     	<button type="button" class="btn btn-danger">ลบ</button>
-					    </div>-->
 					</div>
 					<div class="form-grop">
 						<div class="col-md-4 col-md-offset-5">

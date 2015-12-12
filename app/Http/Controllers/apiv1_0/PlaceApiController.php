@@ -72,6 +72,8 @@ class PlaceApiController extends Controller
         $statusCode = 200;
         $kaset = DB::table('profiles')->join('prefixs','prefixs.prefix_id','=','profiles.prefix')
         ->join('farmercommunities','farmercommunities.fmcm_id','=','profiles.fmcm_id')
+        ->join('users','users.id','=','profiles.user_id')
+        ->join('typeusers','typeusers.tu_id','=','users.typeuser_id')
         ->where('profiles.user_district_code','=',$district)->get();
         //$email = DB::table('contacts')->where('tyct_type','=','2')->where('pf_id','=',$profile[0]->pf_id)->get();
         //$facebook = DB::table('contacts')->where('tyct_type','=','3')->where('pf_id','=',$profile[0]->pf_id)->get();
@@ -108,6 +110,8 @@ class PlaceApiController extends Controller
         $statusCode = 200;
         $kaset = DB::table('profiles')->join('prefixs','prefixs.prefix_id','=','profiles.prefix')
         ->join('farmercommunities','farmercommunities.fmcm_id','=','profiles.fmcm_id')
+        ->join('users','users.id','=','profiles.user_id')
+        ->join('typeusers','typeusers.tu_id','=','users.typeuser_id')
         ->where('profiles.user_aumphur_code','=',$aumphur)->get();
         //$email = DB::table('contacts')->where('tyct_type','=','2')->where('pf_id','=',$profile[0]->pf_id)->get();
         //$facebook = DB::table('contacts')->where('tyct_type','=','3')->where('pf_id','=',$profile[0]->pf_id)->get();
