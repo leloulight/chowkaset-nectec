@@ -1,6 +1,6 @@
 <div id="place_detail_kaset_add" class="place_kaset_class" style="display: none;">
 <div id="background_place_detail_kaset_add"class="background_full"></div>
-	<div class="col_place_kaset col-md-12" id="id_col_place_detail_kaset" style="margin:0px;height: 92%;">
+	<div class="col_place_kaset col-md-12" id="id_col_place_detail_kaset" style="margin:0px;height: 92%;width:100%;">
 	   <div id="farm_management_console">
 		<div id="id_farm_management_menu" class="farm_management_menu col-md-1">
 			<ul class="nav nav-pills">
@@ -28,7 +28,7 @@
 						<div class="body_card">
 						<div id="progress_management_sum" class="col-md-12 col-xs-12">
 							<div class="tab-content" id="progress_management_detail_tab">
-								
+
 							</div>
 						</div>
 						</div>
@@ -47,7 +47,7 @@
 									</tr>
 								</thead>
 								<tbody id="show_calendar_management">
-									
+
 								</tbody>
 							</table>
 						</div>
@@ -148,7 +148,7 @@
 <script>
 	$('#dpd1').datepicker('setValue', new Date());
 	$(document).ready(function(){
-		$("#farm_detail_crops_list").empty();	
+		$("#farm_detail_crops_list").empty();
 		$("#progress_management_detail_tab").empty();
 		$('#show_calendar_management').empty();
 		$.ajax({
@@ -246,7 +246,7 @@
 					}
 			});
 		$("#click_kaset_show").click(function(){
-		$("#farm_detail_crops_list").empty();	
+		$("#farm_detail_crops_list").empty();
 		$("#progress_management_detail_tab").empty();
 		$('#show_calendar_management').empty();
 			$.ajax({
@@ -429,40 +429,40 @@
 
 		});
 	});
-function newDayAdd(inputDate,addDay){  
-    var d = new Date(inputDate);  
-    d.setDate(d.getDate()+addDay);  
-    mkMonth=d.getMonth()+1;  
-    mkMonth=new String(mkMonth);  
-    if(mkMonth.length==1){  
-        mkMonth="0"+mkMonth;  
-    }  
-    mkDay=d.getDate();  
-    mkDay=new String(mkDay);  
-    if(mkDay.length==1){  
-        mkDay="0"+mkDay;  
-    }     
-    mkYear=d.getFullYear(); 
-    var thmonth = new Array ("มกราคม","กุมภาพันธ์","มีนาคม","เมษายน","พฤษภาคม","มิถุนายน", "กรกฎาคม","สิงหาคม","กันยายน","ตุลาคม","พฤศจิกายน","ธันวาคม"); 
-    var callMonth = thmonth[mkMonth-1];
-//  return mkYear+"-"+newMonth+"-"+newDay; // แสดงผลลัพธ์ในรูปแบบ ปี-เดือน-วัน  
-    return mkDay+" "+callMonth+" "+(mkYear+543); // แสดงผลลัพธ์ในรูปแบบ เดือน/วัน/ปี      
-}  
-function newDayAddNumber(inputDate,addDay){  
-    var d = new Date(inputDate);  
-    d.setDate(d.getDate()+addDay);  
-    mkMonth=d.getMonth()+1;  
-    mkMonth=new String(mkMonth);  
-    if(mkMonth.length==1){  
-        mkMonth="0"+mkMonth;  
-    }  
-    mkDay=d.getDate();  
-    mkDay=new String(mkDay);  
-    if(mkDay.length==1){  
-        mkDay="0"+mkDay;  
-    }     
+function newDayAdd(inputDate,addDay){
+    var d = new Date(inputDate);
+    d.setDate(d.getDate()+addDay);
+    mkMonth=d.getMonth()+1;
+    mkMonth=new String(mkMonth);
+    if(mkMonth.length==1){
+        mkMonth="0"+mkMonth;
+    }
+    mkDay=d.getDate();
+    mkDay=new String(mkDay);
+    if(mkDay.length==1){
+        mkDay="0"+mkDay;
+    }
     mkYear=d.getFullYear();
-//  return mkYear+"-"+newMonth+"-"+newDay; // แสดงผลลัพธ์ในรูปแบบ ปี-เดือน-วัน  
-    return mkMonth+"/"+mkDay+"/"+(mkYear); // แสดงผลลัพธ์ในรูปแบบ เดือน/วัน/ปี      
-}  
+    var thmonth = new Array ("มกราคม","กุมภาพันธ์","มีนาคม","เมษายน","พฤษภาคม","มิถุนายน", "กรกฎาคม","สิงหาคม","กันยายน","ตุลาคม","พฤศจิกายน","ธันวาคม");
+    var callMonth = thmonth[mkMonth-1];
+//  return mkYear+"-"+newMonth+"-"+newDay; // แสดงผลลัพธ์ในรูปแบบ ปี-เดือน-วัน
+    return mkDay+" "+callMonth+" "+(mkYear+543); // แสดงผลลัพธ์ในรูปแบบ เดือน/วัน/ปี
+}
+function newDayAddNumber(inputDate,addDay){
+    var d = new Date(inputDate);
+    d.setDate(d.getDate()+addDay);
+    mkMonth=d.getMonth()+1;
+    mkMonth=new String(mkMonth);
+    if(mkMonth.length==1){
+        mkMonth="0"+mkMonth;
+    }
+    mkDay=d.getDate();
+    mkDay=new String(mkDay);
+    if(mkDay.length==1){
+        mkDay="0"+mkDay;
+    }
+    mkYear=d.getFullYear();
+//  return mkYear+"-"+newMonth+"-"+newDay; // แสดงผลลัพธ์ในรูปแบบ ปี-เดือน-วัน
+    return mkMonth+"/"+mkDay+"/"+(mkYear); // แสดงผลลัพธ์ในรูปแบบ เดือน/วัน/ปี
+}
 </script>
