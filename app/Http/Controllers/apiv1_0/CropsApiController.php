@@ -339,6 +339,9 @@ class CropsApiController extends Controller
     //เพิ่มปัญหาการเพาะปลูก
     public function AddProblemData(Request $request)
     {
+        $date = $request->input('pbm_date');
+        $dateformat = explode('-', $date);
+        $date_pbm = $dateformat[2].'-'.$dateformat[1].'-'.$dateformat[0];
         $dataProblem = new Topics;
         $dataProblem->tp_title = $request->input('pbm_detail');
         $dataProblem->tp_status = '0';
@@ -347,6 +350,7 @@ class CropsApiController extends Controller
         $dataProblem->tp_countvotes = '0';
         $dataProblem->tp_topics_type_id = '2';
         $dataProblem->tp_user_id = Auth::user()->id;
+        $dataProblem->created_at = $date_pbm;
         $dataProblem->tp_crop_id = $request->input('pbm_crop_id');
         $dataProblem = $dataProblem->save();
         try{
@@ -369,10 +373,13 @@ class CropsApiController extends Controller
     }
     //แก้ใขปัญหาการเพาะปลูก
     public function EditProblemData(Request $request)
-    {    
+    {
         $statusCode = 200;
+            $date = $request->input('edt_pbm_date');
+            $dateformat = explode('-', $date);
+            $date_pbm = $dateformat[2].'-'.$dateformat[1].'-'.$dateformat[0];
             $dataAccount = DB::table('topics')->where('topics.tp_id','=', $request->input('iedt_pbm_id'))
-            ->update(['tp_title'=> $request->input('iedt_pbm_detail'),'tp_status'=>'0']
+            ->update(['tp_title'=> $request->input('iedt_pbm_detail'),'tp_status'=>'0','created_at'=>$date_pbm]
             );
         if($dataAccount){
             $response = [

@@ -1,6 +1,6 @@
 <div id="place_detail_kaset_add" class="place_kaset_class" style="display: none;">
 <div id="background_place_detail_kaset_add"class="background_full"></div>
-	<div class="col_place_kaset col-md-12" id="id_col_place_detail_kaset" style="margin:0px;height: 92%;width:100%;">
+	<div class="col_place_kaset col-md-12" id="id_col_place_detail_kaset" style="margin:0px;height: 92%;">
 	   <div id="farm_management_console">
 		<div id="id_farm_management_menu" class="farm_management_menu col-md-1">
 			<ul class="nav nav-pills">

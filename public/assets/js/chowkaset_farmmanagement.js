@@ -197,20 +197,20 @@ function account_table(id_acc){
 			    					td.innerHTML = data.data[count].acc_detail;
 			    					tr.appendChild(td);
 			    					var td = document.createElement('td');
-			    					if(data.data[count].acc_cost_type=='1'){ 
+			    					if(data.data[count].acc_cost_type=='1'){
 			    						money_income = parseFloat(money_income)+parseFloat(data.data[count].acc_price);
 			    						money_total = parseFloat(money_total)+parseFloat(data.data[count].acc_price);
-			    						td.innerHTML = price_change(data.data[count].acc_price); 
+			    						td.innerHTML = price_change(data.data[count].acc_price);
 			    					}else{
 			    						td.innerHTML = '-';
 			    					}
 			    					tr.appendChild(td);
 			    					var td = document.createElement('td');
-			    					if(data.data[count].acc_cost_type=='2'){ 
+			    					if(data.data[count].acc_cost_type=='2'){
 			    						money_outcome = parseFloat(money_outcome)+parseFloat(data.data[count].acc_price);
 			    						money_total = parseFloat(money_total)+parseFloat(data.data[count].acc_price);
 			    						m = parseFloat(data.data[count].acc_price*-1);
-			    						td.innerHTML = price_change(m); 
+			    						td.innerHTML = price_change(m);
 			    					}else{
 			    						td.innerHTML = '-';
 			    					}
@@ -253,8 +253,8 @@ function account_table(id_acc){
 			    					td.setAttribute('colspan','6');
 			    					tr.appendChild(td);
 		    			}
-		    			
-			
+
+
 	    });
 	});
 }
@@ -400,19 +400,19 @@ function edit_account_table(id_acc,edt_id){
 			    					td.innerHTML = data.data[count].acc_detail;
 			    					tr.appendChild(td);
 			    					var td = document.createElement('td');
-			    					if(data.data[count].acc_cost_type=='1'){ 
+			    					if(data.data[count].acc_cost_type=='1'){
 			    						money_income = parseFloat(money_income)+parseFloat(data.data[count].acc_price);
 			    						money_total = parseFloat(money_total)+parseFloat(data.data[count].acc_price);
-			    						td.innerHTML = price_change(data.data[count].acc_price); 
+			    						td.innerHTML = price_change(data.data[count].acc_price);
 			    					}else{
 			    						td.innerHTML = '-';
 			    					}
 			    					tr.appendChild(td);
 			    					var td = document.createElement('td');
-			    					if(data.data[count].acc_cost_type=='2'){ 
+			    					if(data.data[count].acc_cost_type=='2'){
 			    						money_outcome = parseFloat(money_outcome)+parseFloat(data.data[count].acc_price);
 			    						money_total = parseFloat(money_total)-parseFloat(data.data[count].acc_price);
-			    						td.innerHTML = price_change(data.data[count].acc_price); 
+			    						td.innerHTML = price_change(data.data[count].acc_price);
 			    					}else{
 			    						td.innerHTML = '-';
 			    					}
@@ -444,19 +444,19 @@ function edit_account_table(id_acc,edt_id){
 			    					td.innerHTML = '<input type="input" class="form-control" name="edt_acc_detail" placeholder="รายละเอียด" value="'+data.data[count].acc_detail+'" style="width: 100%;">';
 			    					tr.appendChild(td);
 			    					var td = document.createElement('td');
-			    					if(data.data[count].acc_cost_type=='1'){ 
+			    					if(data.data[count].acc_cost_type=='1'){
 			    						money_income = money_income+data.data[count].acc_price;
 			    						money_total = money_total+data.data[count].acc_price;
-			    						td.innerHTML = '<input type="input" class="form-control" name="edt_acc_price" placeholder="จำนวนเงิน (บาท)" style="width: 100%;" onchange="dokeyup(this)" onkeyup="dokeyup(this)" onkeypress="checknumber()"  value="'+price_change(data.data[count].acc_price)+'"><input type="hidden" name="edt_cost_type" value="'+data.data[count].acc_cost_type+'">'; 
+			    						td.innerHTML = '<input type="input" class="form-control" name="edt_acc_price" placeholder="จำนวนเงิน (บาท)" style="width: 100%;" onchange="dokeyup(this)" onkeyup="dokeyup(this)" onkeypress="checknumber()"  value="'+price_change(data.data[count].acc_price)+'"><input type="hidden" name="edt_cost_type" value="'+data.data[count].acc_cost_type+'">';
 			    					}else{
 			    						td.innerHTML = '-';
 			    					}
 			    					tr.appendChild(td);
 			    					var td = document.createElement('td');
-			    					if(data.data[count].acc_cost_type=='2'){ 
+			    					if(data.data[count].acc_cost_type=='2'){
 			    						money_outcome = money_outcome+data.data[count].acc_price;
 			    						money_total = money_total-data.data[count].acc_price;
-			    						td.innerHTML = '<input type="input" class="form-control" name="edt_acc_price" placeholder="จำนวนเงิน (บาท)" style="width: 100%;" onchange="dokeyup(this)" onkeyup="dokeyup(this)" onkeypress="checknumber()" value="'+price_change(data.data[count].acc_price)+'"><input type="hidden" name="edt_cost_type" value="'+data.data[count].acc_cost_type+'">'; 
+			    						td.innerHTML = '<input type="input" class="form-control" name="edt_acc_price" placeholder="จำนวนเงิน (บาท)" style="width: 100%;" onchange="dokeyup(this)" onkeyup="dokeyup(this)" onkeypress="checknumber()" value="'+price_change(data.data[count].acc_price)+'"><input type="hidden" name="edt_cost_type" value="'+data.data[count].acc_cost_type+'">';
 			    					}else{
 			    						td.innerHTML = '-';
 			    					}
@@ -499,8 +499,8 @@ function edit_account_table(id_acc,edt_id){
 			    					td.setAttribute('colspan','6');
 			    					tr.appendChild(td);
 		    			}
-		    			
-			
+
+
 	    });
 	});
 }
@@ -613,8 +613,21 @@ function problem_table(id_prb){
 					    inp_crop.setAttribute('name','pbm_crop_id');
 					    inp_crop.setAttribute('value',id_prb)
 					    form_problem.appendChild(inp_crop);
+                var div_in = document.createElement('div');
+                div_in.setAttribute('class','col-md-2');
+                div_in.style.marginBottom = '15px';
+                form_problem.appendChild(div_in);
+                var date = document.createElement('input');
+                date.setAttribute('type','input');
+                date.setAttribute('id','dpd2');
+                date.style.width = '100%';
+                date.setAttribute('class','form-control');
+                date.setAttribute('data-date-format','dd-mm-yyyy');
+                date.setAttribute('name','pbm_date');
+                div_in.appendChild(date);
+                $('#dpd2').datepicker('setValue', new Date());
 					    	var div_in = document.createElement('div');
-				    		div_in.setAttribute('class','col-md-12');
+				    		div_in.setAttribute('class','col-md-10');
 				    		div_in.style.marginBottom = '15px';
 				    		form_problem.appendChild(div_in);
 					    		var inp_descript = document.createElement('textarea');
@@ -704,6 +717,7 @@ function problem_table(id_prb){
 }
 function dialog_add_problem(){
 	var $form = $('#add_form_problem'),
+  add_pbm_date = $form.find( "input[name='pbm_date']" ).val(),
 	add_pbm_detail = $form.find( "textarea[name='pbm_detail']" ).val(),
 	add_pbm_crop_id = $form.find( "input[name='pbm_crop_id']" ).val();
 	if(add_pbm_detail==''||add_pbm_detail==null){
@@ -716,7 +730,8 @@ function dialog_add_problem(){
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },
 	    data: {
-	    	pbm_detail: add_pbm_detail,
+          pbm_date: add_pbm_date,
+	    	  pbm_detail: add_pbm_detail,
 	        pbm_crop_id: add_pbm_crop_id,
 	    },
 	    success: function (data) {
@@ -774,7 +789,20 @@ function edit_problem_table(id_prb,edt_id){
 					    inp_crop.setAttribute('value',id_prb)
 					    form_problem.appendChild(inp_crop);
 					    	var div_in = document.createElement('div');
-				    		div_in.setAttribute('class','col-md-12');
+				    		div_in.setAttribute('class','col-md-2');
+				    		div_in.style.marginBottom = '15px';
+				    		form_problem.appendChild(div_in);
+                var date = document.createElement('input');
+                date.setAttribute('type','input');
+                date.setAttribute('id','dpd3');
+                date.style.width = '100%';
+                date.setAttribute('class','form-control');
+                date.setAttribute('data-date-format','dd-mm-yyyy');
+                date.setAttribute('name','pbm_date');
+                div_in.appendChild(date);
+                $('#dpd3').datepicker('setValue', new Date());
+                var div_in = document.createElement('div');
+				    		div_in.setAttribute('class','col-md-10');
 				    		div_in.style.marginBottom = '15px';
 				    		form_problem.appendChild(div_in);
 					    		var inp_descript = document.createElement('textarea');
@@ -877,7 +905,7 @@ function edit_problem_table(id_prb,edt_id){
 			    					tr.appendChild(td);
 			    					count++;
 			    				}
-			    				
+
 							}
 						}else{
 		    					var tr = document.createElement('tr');
@@ -922,7 +950,7 @@ function dokeyup( obj )
     var value = obj.value;
     var svals = value.split( "." ); //แยกทศนิยมออก
     var sval = svals[0]; //ตัวเลขจำนวนเต็ม
-  
+
     var n = 0;
     var result = "";
     var c = "";
@@ -940,12 +968,12 @@ function dokeyup( obj )
         result = c + result;
       };
     };
-  
+
     if ( svals[1] )
     {
       result = result + '.' + svals[1];
     };
-  
+
     obj.value = result;
   };
 };
@@ -977,6 +1005,3 @@ function price_change(price)
 	new_price = addCommas(num.toFixed(2));
 	return new_price;
 }
-
-
-

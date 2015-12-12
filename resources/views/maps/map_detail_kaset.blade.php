@@ -1,7 +1,7 @@
 <div id="place_kaset" class="place_kaset_class" style="display: none;">
 <div id="background_place_kaset" class="background_full"></div>
 
-<div class="col_place_kaset" id="id_col_place_kaset">
+<div class="col_place_kaset" id="id_col_place_kaset" style="width: 380px;">
 		<div class="place_kaset_header" id="name_rai"></div>
 			<div class="place_kaset_progress" id="id_place_kaset_progress">
 				<div class="progress_logo_area">
