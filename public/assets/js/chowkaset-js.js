@@ -32,7 +32,7 @@ function place_kaset(map_id) {
           if(data[0].fname==null||data[0].fname=='null'||data[0].fname==''){
             $('#kaset_phone').html('เกษตรกรท่านนี้ยังไม่ได้ระบุเบอร์โทรศัพท์');
             $('#kaset_email').html('เกษตรกรท่านนี้ยังไม์ได้ระบุอีเมล์');
-            $('#facebook_place').html('เกษตรกรท่านนี้ยังไม่ได้ระบุเฟสบุ้ก');
+            $('#facebook_place').html('เกษตรกรท่านนี้ยังไม่ได้ระบุเฟสบุ๊ค');
           }else{
             $.ajax({
               url: site_url+"/api/v1.0/Profiles/phone_profile/"+data[0].pf_id
@@ -49,10 +49,13 @@ function place_kaset(map_id) {
                     phone_number += value.ct_detail+' , ';
                   }else{
                     phone_number += value.ct_detail;
+                    new_phone_format = phone_number[0]+phone_number[1]+phone_number[3]+'-'+phone_number[4]+phone_number[5]+phone_number[6]+phone_number[7]+phone_number[8]+phone_number[9];
+                    phone_number = new_phone_format;
                   }
                   count++;
                 });
               }
+
               $('#kaset_phone').html(phone_number);
               });
               $.ajax({
@@ -95,7 +98,7 @@ function place_kaset(map_id) {
                     facebook += '<a href="'+value.ct_detail+'"><p>'+value.ct_detail+'</p></a>';
                     }else{
                       facebook += '<a href="'+value.ct_detail+'"><p>'+value.ct_detail+'</p></a>';
-                    } 
+                    }
                   }
                   count++;
                 });
@@ -123,7 +126,7 @@ function right_click_tooltip(lat,lng){
     $("#longitude_add_new_crop").val(lng);
     if(!id_tooltip){
         create_tooltip(lat,lng);
-    }else{        
+    }else{
         drop_tooltip();
         create_tooltip(lat,lng);
     }
@@ -147,7 +150,7 @@ function create_tooltip_list(lat,lng){
     tooltip_unordered_list.setAttribute('class','nav nav-pills nav-stacked');
     id_tooltip_option.appendChild(tooltip_unordered_list);
         //list 1 create_
-        
+
         var list_tooltip = document.createElement('li');
         list_tooltip.setAttribute('role','option-list');
         list_tooltip.setAttribute('class','list_option_tooltip');

@@ -375,11 +375,8 @@ class CropsApiController extends Controller
     public function EditProblemData(Request $request)
     {
         $statusCode = 200;
-            $date = $request->input('edt_pbm_date');
-            $dateformat = explode('-', $date);
-            $date_pbm = $dateformat[2].'-'.$dateformat[1].'-'.$dateformat[0];
             $dataAccount = DB::table('topics')->where('topics.tp_id','=', $request->input('iedt_pbm_id'))
-            ->update(['tp_title'=> $request->input('iedt_pbm_detail'),'tp_status'=>'0','created_at'=>$date_pbm]
+            ->update(['tp_title'=> $request->input('iedt_pbm_detail'),'tp_status'=>'0']
             );
         if($dataAccount){
             $response = [

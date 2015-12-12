@@ -61,7 +61,7 @@
 						    }
 						  	</script>
 				</div>
-				<div class="panel-heading"><h2 class="head-col">ข้อมูลสังกัด</h2><hr></div>
+				<div class="panel-heading"><h2 class="head-col">ข้อมูลสมาชิก</h2><hr></div>
 				<div class="panel-body">
 					<div class="form-group">
 					    <div class="col-md-4 col-sm-4 col-xs-4">
@@ -126,8 +126,8 @@ $(document).ready(function(){
 				   	  	opt += '<option value="'+value.DISTRICT_ID+'">'+value.DISTRICT_NAME+'</option>';
 				   	  });
 				   	  $("#district_area").html(opt);
-				});	
-		});	
+				});
+		});
 		$.ajax({
 		  url: site_url+"/api/v1.0/farmercomunity"
 		}).then(function(aumphurs) {
@@ -136,7 +136,7 @@ $(document).ready(function(){
 		   	  	opt += '<option value="'+value.fmcm_id+'">'+value.fmcm_name+'</option>';
 		   	  });
 		   	  $("#farmercomunity_area").html(opt);
-		});	
+		});
 
 	// ส่วนของจังหวัดเมื่อมีการเปลี่ยนแปลง
 	$("#province_area").change(function(){
@@ -158,8 +158,8 @@ $(document).ready(function(){
 				   	  	opt += '<option value="'+value.DISTRICT_ID+'">'+value.DISTRICT_NAME+'</option>';
 				   	  });
 				   	  $("#district_area").html(opt);
-				});	
-		});	
+				});
+		});
 	});
 	// ส่วนของอำเภอเมื่อมีการเปลี่ยนแปลง
 	$("#aumphur_area").change(function(){
@@ -173,7 +173,7 @@ $(document).ready(function(){
 		   	  });
 		   	  $("#district_area").html(opt);
 
-		});	
+		});
 	});
 });
 </script>

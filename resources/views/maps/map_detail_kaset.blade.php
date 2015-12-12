@@ -35,7 +35,7 @@
 				<form class="form_content_place_detail" role="form" method="POST" action="FileJSJA">
 					<div class="form-group"><div class="col-md-12 kaset-padding-bottom">
 						<label for="tel">เบอร์โทรศัพท์</label><p id="kaset_phone"></p><hr>
-						<label for="facebook">เฟสบุ๊ก</label>
+						<label for="facebook">เฟสบุ๊ค</label>
 						<div id="facebook_place">
 						</div>
 						<hr>
