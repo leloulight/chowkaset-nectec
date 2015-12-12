@@ -64,6 +64,12 @@
 				<div class="panel-heading"><h2 class="head-col">ข้อมูลสมาชิก</h2><hr></div>
 				<div class="panel-body">
 					<div class="form-group">
+						<div class="col-md-4 col-sm-4 col-xs-4">
+							<label class="radio-inline"><input type="radio" name="optcommu" onclick="create_profile_hide_community()" checked="checked">เป็นสมาชิกศูนย์ข้าว</label>
+							<label class="radio-inline"><input type="radio" name="optcommu" onclick="create_profile_show_community()">ไม่เป็นสมาชิกศูนย์ข้าว</label>
+						</div>
+					</div>
+					<div class="form-group" style="display:none;" id="create_profile_community">
 					    <div class="col-md-4 col-sm-4 col-xs-4">
 							<select data-placeholder="เลือกศูนย์ข้าว" class="form-control" id="farmercomunity_area" name="farmercomunity">
 					        <option value="1">เลือกศูนย์ข้าว</option>
@@ -100,6 +106,12 @@
 	</div>
 </div>
 <script>
+function create_profile_hide_community(){
+	$("#create_profile_community").hide();
+}
+function create_profile_show_community(){
+	$("#create_profile_community").show();
+}
 					$.validate({
 						modules: 'security, server,file',
 							onModulesLoaded: function () {
