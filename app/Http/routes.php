@@ -60,6 +60,7 @@ Route::group(array('prefix' => '/api/v1.0'), function()
         Route::get('com_in_province/{province}','apiv1_0\PlaceApiController@com_in_province');
         Route::get('com_in_district/{aumphur}','apiv1_0\PlaceApiController@com_in_district');
         Route::get('com_in_aumphur/{aumphur}','apiv1_0\PlaceApiController@com_in_aumphur');
+        Route::get('getCommunityProfile/{com_id}','apiv1_0\PlaceApiController@getCommunityProfile');
         //แผน
         Route::get('plan_in_seed/{seed}','apiv1_0\PlaceApiController@plan_in_seed');
         Route::get('plan_in_breed/{breed}','apiv1_0\PlaceApiController@plan_in_breed');

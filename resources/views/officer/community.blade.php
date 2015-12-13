@@ -41,10 +41,11 @@
 					  </tbody>
 					</table>
 		  	</div>
+
 		  	<div class="col-md-12 officer-main-content" style="display:none;" id="com_add_area">
-		  	<button id="officer_add_cancle_top_com" type="button" class="btn btn-danger btn-add">ยกเลิกการเพิ่มรายชื่อ</button>
+		  	<button type="button" class="btn btn-danger btn-add officer_add_cancle_top_com">ยกเลิกการเพิ่มรายชื่อ</button>
 		  	<form class="form-horizontal" role="form" method="post" action="{{ url('/officer/addCommunity/commit')}}">
-				<div class="panel-heading"><h2 class="head-col">เพิ่มข้อมูลหน่วยงาน</h2><hr></div>
+				<div class="panel-heading"><h2 class="head-col">เพิ่มข้อมูลศูนย์ข้าวชุมชน</h2><hr></div>
 				<div class="panel-body">
 					<input type="hidden" name="_token" value="{{ csrf_token() }}">
 						<div class="form-group">
@@ -89,7 +90,7 @@
 					        <input type="email" class="form-control" id="email" placeholder="อีเมล์" data-validation="email" data-validation-help="เช่น chowkaset@nectec.com" value="" name="email">
 					    </div>
 					    <div class="col-md-4 col-sm-4 col-xs-4">
-					        <input type="text" class="form-control" id="email" placeholder="เฟสบุ้ก" data-validation-help="เช่น https://www.facebook.com/nectec" value="" name="facebook">
+					        <input type="text" class="form-control" id="facebook" placeholder="เฟสบุ้ก" data-validation-help="เช่น https://www.facebook.com/nectec" value="" name="facebook">
 					    </div>
 					    <!--<div class="col-md-4 col-sm-4 col-xs-4">
 					     	<button type="button" class="btn btn-success">เพิ่ม</button>
@@ -99,7 +100,69 @@
 					<div class="form-grop">
 						<div class="col-md-4 col-md-offset-5">
 							<button type="submit" class="btn btn-success">ตกลง</button>
-							<button type="button" class="btn btn-danger" id="officer_add_cancle_com">ยกเลิก</button>
+							<button type="button" class="btn btn-danger officer_add_cancle_top_com">ยกเลิก</button>
+						</div>
+					</div>
+				</div>
+				</form>
+		  	</div>
+
+<!-- ///////////////////////// -->
+				<div class="col-md-12 officer-main-content" style="display:none;" id="com_edit_area">
+		  	<button type="button" class="btn btn-danger btn-add officer_add_cancle_top_com">ยกเลิกการแก้ไขรายชื่อศูนย์ข้าวชุมชน</button>
+		  	<form class="form-horizontal" role="form" method="post" action="{{ url('/officer/editCommunity/commit')}}">
+				<div class="panel-heading"><h2 class="head-col">แก้ไขข้อมูลศูนย์ข้าวชุมชน</h2><hr></div>
+				<div class="panel-body">
+					<input type="hidden" name="_token" value="{{ csrf_token() }}">
+						<div class="form-group">
+					      <div class="col-md-8">
+					        <input type="text" class="form-control" id="com_editarea_name" placeholder="ชื่อหน่วยงาน" data-validation="required" value="" name="com_editarea_name">
+					      </div>
+					      <div class="col-md-4">
+					        <select data-placeholder="เลือกสังกัด" class="form-control" id="com_editarea_dpm" name="com_editarea_dpm">
+				            <option value="1">กรมการข้าว</option>
+				    		</select>
+					      </div>
+					    </div>
+					    <div class="form-group">
+					      <div class="col-md-6">
+					        <input type="text" class="form-control" id="com_editarea_address" placeholder="ที่อยู่" value="" name="com_editarea_address">
+					      </div>
+					      <div class="col-md-2">
+					        <select data-placeholder="เลือกจังหวัด" class="form-control" id="com_editarea_province" name="com_editarea_province">
+				            <option value="49">กำแพงเพชร</option>
+				            <option value="1">กรุงเทพ</option>
+				    		</select>
+					      </div>
+					      <div class="col-md-2">
+					        <select data-placeholder="เลือกอำเภอ" class="form-control" id="com_editarea_aumphur" name="com_editarea_aumphur">
+					        <option value="0">เลือกอำเภอ</option>
+				    		</select>
+					      </div>
+					      <div class="col-md-2">
+					        <select data-placeholder="เลือกตำบล" class="form-control" tabindex="3" id="com_editarea_district" name="com_editarea_district">
+				            <option value="0">เลือกตำบล</option>
+				    		</select>
+					      </div>
+					    </div>
+				</div>
+				<div class="panel-heading"><h2 class="head-col">ข้อมูลติดต่อ</h2><hr></div>
+				<div class="panel-body">
+					<div class="form-group">
+					    <div class="col-md-4 col-sm-4 col-xs-4">
+					        <input type="text" class="form-control" id="com_editarea_phone" name="phone" placeholder="เบอร์โทรศัพท์" data-validation="number length" data-validation-length="10" data-validation-help="เช่น 08123456789" value="">
+					    </div>
+					     <div class="col-md-4 col-sm-4 col-xs-4">
+					        <input type="email" class="form-control" id="com_editarea_email" placeholder="อีเมล์" data-validation="email" data-validation-help="เช่น chowkaset@nectec.com" value="" name="email">
+					    </div>
+					    <div class="col-md-4 col-sm-4 col-xs-4">
+					        <input type="text" class="form-control" id="com_editarea_facebook" placeholder="เฟสบุ้ก" data-validation-help="เช่น https://www.facebook.com/nectec" value="" name="facebook">
+					    </div>
+					</div>
+					<div class="form-grop">
+						<div class="col-md-4 col-md-offset-5">
+							<button type="submit" class="btn btn-success">ตกลง</button>
+							<button type="button" class="btn btn-danger officer_add_cancle_top_com">ยกเลิก</button>
 						</div>
 					</div>
 				</div>
@@ -107,7 +170,24 @@
 		  	</div>
 	</div>
 </div>
+
 <script>
+function officer_edit_comunity(id){
+	$.ajax({
+		  url: site_url+"/api/v1.0/getCommunityProfile/"+id
+		}).then(function(communitydata) {
+		   	  $.each(communitydata.data, function(index, value) {
+						$("#com_editarea_name").val(value.fmcm_name);
+						$("#com_editarea_address").val(value.address);
+						$("#com_editarea_phone").val(value.tel);
+						$("#com_editarea_email").val(value.email);
+						$("#com_editarea_facebook").val(value.facebook);
+					});
+		});
+	$("#com_detail_area").hide();
+	$("#com_add_area").hide();
+	$("#com_edit_area").show();
+}
 // JavaScript Document
 $(document).ready(function(){
 	//ค่าเริ่มต้น
@@ -130,8 +210,8 @@ $(document).ready(function(){
 				   	  	opt += '<option value="'+value.DISTRICT_ID+'">'+value.DISTRICT_NAME+'</option>';
 				   	  });
 				   	  $("#district_area").html(opt);
-				});	
-		});	
+				});
+		});
 		$.ajax({
 		  url: site_url+"/api/v1.0/com_in_province/"+$("#com_province_area").val()
 		}).then(function(farmers) {
@@ -148,12 +228,12 @@ $(document).ready(function(){
 				   	opt+= '<td>'+value.email+'</td>';
 				   	opt+= '<td>'+value.address+'</td>';
 				   	//opt+= '<td><a onclick="" title="แก้ไข"><i class="fa fa-pencil-square edit_acc"></i></a><a onclick="" title="ลบ"><i class="fa fa-trash delete_acc"></i></a></td>';
-				   	opt+= '<td><a onclick="" title="แก้ไข"><i class="fa fa-pencil-square edit_acc"></i></a><a onclick="" title="ลบ"><i class="fa fa-trash delete_acc"></i></a></td>';
+				   	opt+= '<td><a onclick="officer_edit_comunity('+value.fmcm_id+')" title="แก้ไข"><i class="fa fa-pencil-square edit_acc"></i></a><a onclick="" title="ลบ"><i class="fa fa-trash delete_acc"></i></a></td>';
 			   	  	opt += '</tr>';
 			   	  	count ++;
 			   	  	i++;
 			   	  });
-			   	  
+
 			}else{
 				opt += '<tr><td colspan="6">ไม่มีข้อมูลศูนย์ชุมชน</td></tr>';
 			}
@@ -182,8 +262,8 @@ $(document).ready(function(){
 				   	  	opt += '<option value="'+value.DISTRICT_ID+'">'+value.DISTRICT_NAME+'</option>';
 				   	  });
 				   	  $("#com_district_area").html(opt);
-				});	
-		});	
+				});
+		});
 		$.ajax({
 		  url: site_url+"/api/v1.0/com_in_province/"+$("#com_province_area").val()
 		}).then(function(farmers) {
@@ -204,7 +284,7 @@ $(document).ready(function(){
 			   	  	count ++;
 			   	  	i++;
 			   	  });
-			   	  
+
 			}else{
 				opt += '<tr><td colspan="6">ไม่มีข้อมูลศูนย์ชุมชน</td></tr>';
 			}
@@ -246,7 +326,7 @@ $(document).ready(function(){
 			   	  	count ++;
 			   	  	i++;
 			   	  });
-			   	  
+
 			}else{
 				opt += '<tr><td colspan="6">ไม่มีข้อมูลศูนย์ชุมชน</td></tr>';
 			}
@@ -277,7 +357,7 @@ $(document).ready(function(){
 			   	  	count ++;
 			   	  	i++;
 			   	  });
-			   	  
+
 			}else{
 				opt += '<tr><td colspan="6">ไม่มีข้อมูลศูนย์ชุมชน</td></tr>';
 			}
@@ -295,8 +375,9 @@ $(document).ready(function(){
 		$("#com_add_area").hide();
 		$("#com_detail_area").show();
 	});
-	$("#officer_add_cancle_top_com").click(function(){
+	$(".officer_add_cancle_top_com").click(function(){
 		$("#com_add_area").hide();
+		$("#com_edit_area").hide();
 		$("#com_detail_area").show();
 	});
 $(document).ready(function(){
@@ -318,8 +399,8 @@ $(document).ready(function(){
 				   	  	opt += '<option value="'+value.DISTRICT_ID+'">'+value.DISTRICT_NAME+'</option>';
 				   	  });
 				   	  $("#com_district_add").html(opt);
-				});	
-		});	
+				});
+		});
 		$.ajax({
 		  url: site_url+"/api/v1.0/farmercomunity"
 		}).then(function(aumphurs) {
@@ -328,7 +409,7 @@ $(document).ready(function(){
 		   	  	opt += '<option value="'+value.fmcm_id+'">'+value.fmcm_name+'</option>';
 		   	  });
 		   	  $("#add_farmer_farmercomunity_area").html(opt);
-		});	
+		});
 
 	// ส่วนของจังหวัดเมื่อมีการเปลี่ยนแปลง
 	$("#com_province_add").change(function(){
@@ -350,8 +431,8 @@ $(document).ready(function(){
 				   	  	opt += '<option value="'+value.DISTRICT_ID+'">'+value.DISTRICT_NAME+'</option>';
 				   	  });
 				   	  $("#com_district_add").html(opt);
-				});	
-		});	
+				});
+		});
 	});
 	// ส่วนของอำเภอเมื่อมีการเปลี่ยนแปลง
 	$("#com_aumphur_add").change(function(){
@@ -365,8 +446,7 @@ $(document).ready(function(){
 		   	  });
 		   	  $("#com_district_add").html(opt);
 
-		});	
+		});
 	});
 });
 </script>
-

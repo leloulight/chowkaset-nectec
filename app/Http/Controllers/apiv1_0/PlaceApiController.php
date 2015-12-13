@@ -339,4 +339,27 @@ class PlaceApiController extends Controller
         return Response::json($response, $statusCode);
     }
 
+    public function getCommunityProfile($com_id){
+      $statusCode = 200;
+      $userProfile = DB::table('farmercommunities')
+      ->join('province','farmercommunities.province_id','=','province.PROVINCE_ID')
+      ->join('amphur','farmercommunities.aumphur_id','=','amphur.AMPHUR_ID')
+      ->join('district','farmercommunities.district_id','=','district.DISTRICT_ID')
+      ->select('farmercommunities.fmcm_id', 'farmercommunities.fmcm_name','farmercommunities.address',
+       'farmercommunities.tel', 'farmercommunities.email','farmercommunities.facebook')
+      ->where('farmercommunities.fmcm_id','=',$com_id)->get();
+      if($userProfile){
+              $response = [
+                'status'  => '1',
+                'data' => $userProfile,
+              ];
+          }else{
+              $response = [
+                'status'  => '0',
+                'message' => 'No Data!'
+              ];
+          }
+      return Response::json($response, $statusCode);
+    }
+
 }
