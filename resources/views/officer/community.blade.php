@@ -116,6 +116,7 @@
 					<input type="hidden" name="_token" value="{{ csrf_token() }}">
 						<div class="form-group">
 					      <div class="col-md-8">
+									<input type="hidden" class="form-control" id="com_editarea_id" name="com_editarea_id">
 					        <input type="text" class="form-control" id="com_editarea_name" placeholder="ชื่อหน่วยงาน" data-validation="required" value="" name="com_editarea_name">
 					      </div>
 					      <div class="col-md-4">
@@ -150,13 +151,13 @@
 				<div class="panel-body">
 					<div class="form-group">
 					    <div class="col-md-4 col-sm-4 col-xs-4">
-					        <input type="text" class="form-control" id="com_editarea_phone" name="phone" placeholder="เบอร์โทรศัพท์" data-validation="number length" data-validation-length="10" data-validation-help="เช่น 08123456789" value="">
+					        <input type="text" class="form-control" id="com_editarea_phone" name="com_editarea_phone" placeholder="เบอร์โทรศัพท์" data-validation="number length" data-validation-length="10" data-validation-help="เช่น 08123456789" value="">
 					    </div>
 					     <div class="col-md-4 col-sm-4 col-xs-4">
-					        <input type="email" class="form-control" id="com_editarea_email" placeholder="อีเมล์" data-validation="email" data-validation-help="เช่น chowkaset@nectec.com" value="" name="email">
+					        <input type="email" class="form-control" id="com_editarea_email" placeholder="อีเมล์" data-validation="email" data-validation-help="เช่น chowkaset@nectec.com" value="" name="com_editarea_email">
 					    </div>
 					    <div class="col-md-4 col-sm-4 col-xs-4">
-					        <input type="text" class="form-control" id="com_editarea_facebook" placeholder="เฟสบุ้ก" data-validation-help="เช่น https://www.facebook.com/nectec" value="" name="facebook">
+					        <input type="text" class="form-control" id="com_editarea_facebook" placeholder="เฟสบุ้ก" data-validation-help="เช่น https://www.facebook.com/nectec" value="" name="com_editarea_facebook">
 					    </div>
 					</div>
 					<div class="form-grop">
@@ -177,11 +178,42 @@ function officer_edit_comunity(id){
 		  url: site_url+"/api/v1.0/getCommunityProfile/"+id
 		}).then(function(communitydata) {
 		   	  $.each(communitydata.data, function(index, value) {
+						$("#com_editarea_id").val(id);
 						$("#com_editarea_name").val(value.fmcm_name);
 						$("#com_editarea_address").val(value.address);
 						$("#com_editarea_phone").val(value.tel);
 						$("#com_editarea_email").val(value.email);
 						$("#com_editarea_facebook").val(value.facebook);
+								$.ajax({
+									  url: site_url+"/api/v1.0/aumphur/"+$("#com_editarea_province").val()
+									}).then(function(aumphur) {
+												var opt = '';
+												opt += '<option value="0">เลือกอำเภอ</option>';
+									   	  $.each(aumphur, function(index, amp) {
+														if(value.aumphur_id!=amp.AMPHUR_ID){
+															opt += '<option value="'+amp.AMPHUR_ID+'">'+amp.AMPHUR_NAME+'</option>';
+														}else{
+															opt += '<option value="'+amp.AMPHUR_ID+'" selected>'+amp.AMPHUR_NAME+'</option>';
+														}
+												});
+												$("#com_editarea_aumphur").html(opt);
+
+												$.ajax({
+													  url: site_url+"/api/v1.0/district/"+$("#com_editarea_aumphur").val()
+													}).then(function(district) {
+																var opt = '';
+																opt += '<option value="0">เลือกตำบล</option>';
+													   	  $.each(district, function(index, amp) {
+																		if(value.district_id!=amp.DISTRICT_ID){
+																			opt += '<option value="'+amp.DISTRICT_ID+'">'+amp.DISTRICT_NAME+'</option>';
+																		}else{
+																			opt += '<option value="'+amp.DISTRICT_ID+'" selected>'+amp.DISTRICT_NAME+'</option>';
+																		}
+																});
+																$("#com_editarea_district").html(opt);
+													});
+									});
+
 					});
 		});
 	$("#com_detail_area").hide();

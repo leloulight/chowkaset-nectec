@@ -346,7 +346,8 @@ class PlaceApiController extends Controller
       ->join('amphur','farmercommunities.aumphur_id','=','amphur.AMPHUR_ID')
       ->join('district','farmercommunities.district_id','=','district.DISTRICT_ID')
       ->select('farmercommunities.fmcm_id', 'farmercommunities.fmcm_name','farmercommunities.address',
-       'farmercommunities.tel', 'farmercommunities.email','farmercommunities.facebook')
+       'farmercommunities.tel', 'farmercommunities.email','farmercommunities.facebook',
+       'farmercommunities.province_id','farmercommunities.aumphur_id','farmercommunities.district_id')
       ->where('farmercommunities.fmcm_id','=',$com_id)->get();
       if($userProfile){
               $response = [

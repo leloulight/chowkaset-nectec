@@ -16,6 +16,7 @@ Route::get('/home','HomeController@index');
 Route::get('/chatkaset','forumsController@index');
 Route::get('/officer','OfficerController@index');
 Route::post('/officer/addCommunity/commit','OfficerController@officerPostAddCommunity');
+Route::post('/officer/editCommunity/commit','OfficerController@officerPostEditCommunity');
 Route::post('/officer/addPlan/commit','apiv1_0\PlaceApiController@new_plan_crop');
 
 Route::get('auth/facebook', 'Auth\AuthController@redirectToProvider');
