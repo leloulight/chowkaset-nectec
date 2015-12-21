@@ -170,7 +170,7 @@ class AuthController extends Controller
                     'member_id' => $request->input('username'),
                     'password' => $password,
                     'typemember_id' => '1',
-                    'typeuser_id' => $request->input('typeuser_id'),
+                    'typeuser_id' => '3',
                     'name' => $request->input('name'),
                     'email' => $request->input('email'),
                     'picture' => 'assets/img/user.jpg',
