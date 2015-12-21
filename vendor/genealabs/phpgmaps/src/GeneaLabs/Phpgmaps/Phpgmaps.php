@@ -1,7 +1,7 @@
 <?php namespace GeneaLabs\Phpgmaps;
 use URL;
 class Phpgmaps
-{
+{ 
     protected $output_js;
     protected $output_js_contents;
     protected $output_html;

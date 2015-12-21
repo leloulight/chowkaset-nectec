@@ -169,10 +169,72 @@
 				</div>
 				</form>
 		  	</div>
+
+				<!-- ///////////////////////// -->
+								<div class="col-md-12 officer-main-content" style="display:none;" id="com_showcom_area">
+						  	<button type="button" class="btn btn-danger btn-add officer_add_cancle_top_com">ยกเลิกการดูข้อมูลศูนย์ข้าวชุมชน</button>
+								<div class="panel-heading"><h2 class="head-col">ดูข้อมูลศูนย์ข้าวชุมชน</h2><hr></div>
+								<div class="panel-body">
+									<input type="hidden" name="_token" value="{{ csrf_token() }}">
+										<div class="form-group">
+									      <div class="col-md-8">
+													<label class="head_show">ชื่อศูนย์ข้าวชุมชน : </label><p id="community_showarea_name"></p>
+									      </div>
+									      <div class="col-md-4">
+									        <label class="head_show">สังกัด : </label><p id="community_showarea_dpm"></p>
+									      </div>
+									    </div>
+									    <div class="form-group">
+									      <div class="col-md-6">
+									        <label class="head_show">ที่อยู่ : </label><p id="community_showarea_address"></p>
+									      </div>
+									    </div>
+								</div>
+								<div class="panel-heading"><h2 class="head-col">ข้อมูลติดต่อ</h2><hr></div>
+								<div class="panel-body">
+									<div class="form-group">
+									    <div class="col-md-4 col-sm-4 col-xs-4">
+									        <label class="head_show">เบอร์โทร : </label><p id="community_showarea_phone"></p>
+									    </div>
+									     <div class="col-md-4 col-sm-4 col-xs-4">
+									        <label class="head_show">อีเมล์ : </label><p id="community_showarea_email"></p>
+									    </div>
+									    <div class="col-md-4 col-sm-4 col-xs-4">
+									        <label class="head_show">เฟสบุ๊ค : </label><p id="community_showarea_facebook"></p>
+									    </div>
+									</div>
+									<div class="form-grop">
+										<div class="col-md-4 col-md-offset-5">
+											<button type="button" class="btn btn-danger officer_add_cancle_top_com">ยกเลิกการดูข้อมูลศูนย์ข้าวชุมชน</button>
+										</div>
+									</div>
+								</div>
+						  	</div>
+
+
+
 	</div>
 </div>
 
 <script>
+function officer_show_comunity(id){
+	$.ajax({
+		  url: site_url+"/api/v1.0/getCommunityProfile/"+id
+		}).then(function(communitydata) {
+		   	  $.each(communitydata.data, function(index, value) {
+						$("#community_showarea_name").html(value.fmcm_name);
+						$("#community_showarea_dpm").html(value.dpm_name);
+						$("#community_showarea_address").html(value.address);
+						$("#community_showarea_phone").html(value.tel);
+						$("#community_showarea_email").html(value.email);
+						$("#community_showarea_facebook").html(value.facebook);
+					});
+		});
+	$("#com_detail_area").hide();
+	$("#com_add_area").hide();
+	$("#com_edit_area").hide();
+	$("#com_showcom_area").show();
+}
 function officer_edit_comunity(id){
 	$.ajax({
 		  url: site_url+"/api/v1.0/getCommunityProfile/"+id
@@ -260,7 +322,7 @@ $(document).ready(function(){
 				   	opt+= '<td>'+value.email+'</td>';
 				   	opt+= '<td>'+value.address+'</td>';
 				   	//opt+= '<td><a onclick="" title="แก้ไข"><i class="fa fa-pencil-square edit_acc"></i></a><a onclick="" title="ลบ"><i class="fa fa-trash delete_acc"></i></a></td>';
-				   	opt+= '<td><a onclick="officer_edit_comunity('+value.fmcm_id+')" title="แก้ไข"><i class="fa fa-pencil-square edit_acc"></i></a><a onclick="" title="ลบ"><i class="fa fa-trash delete_acc"></i></a></td>';
+				   	opt+= '<td><a onclick="officer_show_comunity('+value.fmcm_id+')" title="เพิ่มเติม"><i class="fa fa-search-plus zoom_acc"></i></a><a onclick="officer_edit_comunity('+value.fmcm_id+')" title="แก้ไข"><i class="fa fa-pencil-square edit_acc"></i></a></td>';
 			   	  	opt += '</tr>';
 			   	  	count ++;
 			   	  	i++;
@@ -311,7 +373,7 @@ $(document).ready(function(){
 				   	opt+= '<td>'+phone+'</td>';
 				   	opt+= '<td>'+value.email+'</td>';
 				   	opt+= '<td>'+value.address+'</td>';
-				   	opt+= '<td><a onclick="" title="แก้ไข"><i class="fa fa-pencil-square edit_acc"></i></a><a onclick="" title="ลบ"><i class="fa fa-trash delete_acc"></i></a></td>';
+				   	opt+= '<td><a onclick="officer_show_comunity('+value.fmcm_id+')" title="เพิ่มเติม"><i class="fa fa-search-plus zoom_acc"></i></a><a onclick="" title="แก้ไข"><i class="fa fa-pencil-square edit_acc"></i></a></td>';
 			   	  	opt += '</tr>';
 			   	  	count ++;
 			   	  	i++;
@@ -353,7 +415,7 @@ $(document).ready(function(){
 				   	opt+= '<td>'+phone+'</td>';
 				   	opt+= '<td>'+value.email+'</td>';
 				   	opt+= '<td>'+value.address+'</td>';
-				   	opt+= '<td><a onclick="" title="แก้ไข"><i class="fa fa-pencil-square edit_acc"></i></a><a onclick="" title="ลบ"><i class="fa fa-trash delete_acc"></i></a></td>';
+				   	opt+= '<td><a onclick="officer_show_comunity('+value.fmcm_id+')" title="เพิ่มเติม"><i class="fa fa-search-plus zoom_acc"></i></a><a onclick="" title="แก้ไข"><i class="fa fa-pencil-square edit_acc"></i></a></td>';
 			   	  	opt += '</tr>';
 			   	  	count ++;
 			   	  	i++;
@@ -384,7 +446,7 @@ $(document).ready(function(){
 				   	opt+= '<td>'+phone+'</td>';
 				   	opt+= '<td>'+value.email+'</td>';
 				   	opt+= '<td>'+value.address+'</td>';
-				   	opt+= '<td><a onclick="" title="แก้ไข"><i class="fa fa-pencil-square edit_acc"></i></a><a onclick="" title="ลบ"><i class="fa fa-trash delete_acc"></i></a></td>';
+				   	opt+= '<td><a onclick="officer_show_comunity('+value.fmcm_id+')" title="เพิ่มเติม"><i class="fa fa-search-plus zoom_acc"></i></a><a onclick="" title="แก้ไข"><i class="fa fa-pencil-square edit_acc"></i></a></td>';
 			   	  	opt += '</tr>';
 			   	  	count ++;
 			   	  	i++;
@@ -410,6 +472,7 @@ $(document).ready(function(){
 	$(".officer_add_cancle_top_com").click(function(){
 		$("#com_add_area").hide();
 		$("#com_edit_area").hide();
+		$("#com_showcom_area").hide();
 		$("#com_detail_area").show();
 	});
 $(document).ready(function(){

@@ -342,12 +342,14 @@ class PlaceApiController extends Controller
     public function getCommunityProfile($com_id){
       $statusCode = 200;
       $userProfile = DB::table('farmercommunities')
+      ->join('department','farmercommunities.dpm_id','=','department.dpm_id')
       ->join('province','farmercommunities.province_id','=','province.PROVINCE_ID')
       ->join('amphur','farmercommunities.aumphur_id','=','amphur.AMPHUR_ID')
       ->join('district','farmercommunities.district_id','=','district.DISTRICT_ID')
       ->select('farmercommunities.fmcm_id', 'farmercommunities.fmcm_name','farmercommunities.address',
        'farmercommunities.tel', 'farmercommunities.email','farmercommunities.facebook',
-       'farmercommunities.province_id','farmercommunities.aumphur_id','farmercommunities.district_id')
+       'farmercommunities.province_id','farmercommunities.aumphur_id','farmercommunities.district_id',
+       'department.dpm_name')
       ->where('farmercommunities.fmcm_id','=',$com_id)->get();
       if($userProfile){
               $response = [
